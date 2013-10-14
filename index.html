@@ -20,17 +20,23 @@ document.write( myDate.toLocaleDateString());
 
 
 <script type="text/javascript">
-function putsStockQuotes(name, elements, myPrice, myDate) {
-     document.write("<tr><td>" + name +"</td><td>" + elements[0] + "</td><td>" + elements[2] + "</td><td>" + elements[3] + "</td><td>" + myPrice +"</td><td>" + myDate + "</td><td>" + elements[30] + "</td></tr>");
+function putsStockQuotes(name, hqStr, myPrice, myDate) {
+
+  var nowChange = ((hqStr[3] - hqStr[2]) / hqStr[2]) * 100;
+  nowChange = nowChange.toFixed(2);
+
+  document.write("<tr><td>" + name +"</td><td>" + hqStr[0] + "</td><td>" + nowChange + "%</td><td>" + hqStr[2] + "</td><td>" + hqStr[3] + "</td><td>" + myPrice +"</td><td>" + myDate + "</td><td>" + hqStr[30] + "</td></tr>");
+
 }
 </script>
 
 
 <table border="1">
 
-<tr>
+<tr valign="right">
   <td>股票代码</td>
   <td>股票名称</td>
+  <td>当日涨跌</td>
   <td>昨日收盘价</td>
   <td>当前价格</td>
   <td>目标价格</td>
