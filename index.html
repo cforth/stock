@@ -28,6 +28,7 @@ function putsStockQuotes(name, hqStr, myPrice, myDate) {
   document.write("<tr><td>" + name +"</td><td>" + hqStr[0] + "</td><td>" + nowChange + "%</td><td>" + hqStr[3] + "</td><td>" + hqStr[2] + "</td><td>" + myPrice +"</td><td>" + myDate + "</td></tr>");
 
 }
+
 </script>
 
 
@@ -55,7 +56,7 @@ putsStockQuotes("300287", hq_str_sz300287.split(","), "40.20", "2013-10-15");
 </script>
 
 </table>
-
+<input type="button" onclick="javascript:window.location.reload(true)" value="刷新"/>
 
 </body>
 </html>
