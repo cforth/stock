@@ -2,64 +2,55 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Language" content="zh-cn" />
-<title>股票关注</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+  <script src="script/hqTable.js"></script>
+  <title>股票关注</title>
 </head>
 
 
 <body>
+  <div id="container">
 
-<h1>研究所股票池关注</h1>
-<h3>
-<script type="text/javascript">
-var myDate=new Date();
-document.write( myDate.toLocaleDateString());
+    <div id="header">
+      <h1>研究所股票池关注</h1>
+    </div>
 
-</script>
-</h3>
+    <div id="date">
+      <p><script>putsDate();</script></p>
+    </div>
 
+    <table>
+      <tr>
+        <td>股票代码</td>
+        <td>股票名称</td>
+        <td>当日涨跌</td>
+        <td>当前价格</td>
+        <td>昨日收盘价</td>
+        <td>关注日期</td>
+        <td>目标价格</td>
+      </tr>
 
-<script type="text/javascript">
-function putsStockQuotes(name, hqStr, myPrice, myDate) {
+      <script src="http://hq.sinajs.cn/list=sz300253,sz002521,sz002063,sz300094,sz002313,sz300299,sz300287,sh600828" charset="gbk"></script>
+    
+      <script>
+        putsStockQuotes("300253", hq_str_sz300253.split(","), "2013-10-14", "70.00");
+        putsStockQuotes("002521", hq_str_sz002521.split(","), "2013-10-14", "9.80");
+        putsStockQuotes("002063", hq_str_sz002063.split(","), "2013-10-14", "25.35");
+        putsStockQuotes("300094", hq_str_sz300094.split(","), "2013-10-14", "8.40");
+        putsStockQuotes("002313", hq_str_sz002313.split(","), "2013-10-14", "20.00");
+        putsStockQuotes("300299", hq_str_sz300299.split(","), "2013-10-15", "20.00");
+        putsStockQuotes("300287", hq_str_sz300287.split(","), "2013-10-15", "40.20");
+        putsStockQuotes("600828", hq_str_sh600828.split(","), "2013-10-16", "6.75");
+      </script>
 
-  var nowChange = ((hqStr[3] - hqStr[2]) / hqStr[2]) * 100;
-  nowChange = nowChange.toFixed(2);
+    </table>
+  
+    <input type="button" onclick="javascript:window.location.reload(true)" value="刷新"/>
 
-  document.write("<tr><td>" + name +"</td><td>" + hqStr[0] + "</td><td>" + nowChange + "%</td><td>" + hqStr[3] + "</td><td>" + hqStr[2] + "</td><td>" + myPrice +"</td><td>" + myDate + "</td></tr>");
-
-}
-
-</script>
-
-
-<table border="1">
-
-<tr valign="right">
-  <td>股票代码</td>
-  <td>股票名称</td>
-  <td>当日涨跌</td>
-  <td>当前价格</td>
-  <td>昨日收盘价</td>
-  <td>关注日期</td>
-  <td>目标价格</td>
-</tr>
-
-<script type="text/javascript" src="http://hq.sinajs.cn/list=sz300253,sz002521,sz002063,sz300094,sz002313,sz300299,sz300287,sh600828" charset="gb2312"></script>
-<script type="text/javascript">
-putsStockQuotes("300253", hq_str_sz300253.split(","), "2013-10-14", "70.00");
-putsStockQuotes("002521", hq_str_sz002521.split(","), "2013-10-14", "9.80");
-putsStockQuotes("002063", hq_str_sz002063.split(","), "2013-10-14", "25.35");
-putsStockQuotes("300094", hq_str_sz300094.split(","), "2013-10-14", "8.40");
-putsStockQuotes("002313", hq_str_sz002313.split(","), "2013-10-14", "20.00");
-putsStockQuotes("300299", hq_str_sz300299.split(","), "2013-10-15", "20.00");
-putsStockQuotes("300287", hq_str_sz300287.split(","), "2013-10-15", "40.20");
-putsStockQuotes("600828", hq_str_sh600828.split(","), "2013-10-16", "6.75");
-</script>
-
-</table>
-<input type="button" onclick="javascript:window.location.reload(true)" value="刷新"/>
+  </div>
 
 </body>
+
 </html>
 
