@@ -18,13 +18,15 @@
       <h1>研究所股票池关注</h1>
     </div>
 
-    <p>
-      <script>
-        putsIndexQuotes(hq_str_s_sh000001.split(","));
-        putsIndexQuotes(hq_str_s_sz399001.split(","));
-        putsDate();
-      </script>
-    </p>  
+    <table>
+      <tr>
+        <td><script>putsIndexQuotes(hq_str_s_sh000001.split(","));</script></td>
+        <td><script>putsIndexQuotes(hq_str_s_sz399001.split(","));</script></td>
+        <td><script>putsDate();</script></td>
+      </tr>
+    </table>  
+  
+    </br>    
 
     <table class="sortable">
       <tr>

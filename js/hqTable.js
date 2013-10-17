@@ -1,10 +1,10 @@
 function putsDate() {
   var myDate=new Date();
-  document.write( "日期：" + myDate.toLocaleDateString());  
+  document.write( "日期:" + myDate.toLocaleDateString());  
 }
 
 function putsIndexQuotes(hqStr) {
-  document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp&nbsp" + hqStr[2] + "&nbsp&nbsp" + hqStr[3] + "%&nbsp&nbsp&nbsp&nbsp");
+  document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp" + hqStr[2] + "&nbsp" + hqStr[3] + "%");
 }
 
 function putsStockQuotes(name, hqStr, industry, myPrice, myDate) {
