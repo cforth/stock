@@ -3,6 +3,9 @@ function putsDate() {
   document.write( myDate.toLocaleDateString());  
 }
 
+function putsIndexQuotes(hqStr) {
+  document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp&nbsp" + hqStr[2] + "&nbsp&nbsp" + hqStr[3] + "%&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+}
 
 function putsStockQuotes(name, hqStr, industry, myPrice, myDate) {
 
