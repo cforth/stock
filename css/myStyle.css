@@ -46,9 +46,7 @@ li {
 }
 
 a {
-  color:#FF4500;
   font-weight:bold;
-  text-decoration:none;
 }
 
 table,td,th {
@@ -70,6 +68,7 @@ td {
 
 #stocktable {
   text-align:right;
+  font-weight:bold;
 }
 
 #sthead {

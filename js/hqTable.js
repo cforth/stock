@@ -15,8 +15,25 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   var totalChange = ((hqStr[3] - bidPrice) / bidPrice) * 100;
   totalChange = totalChange.toFixed(2);
 
-  document.write("<tr><td>" + id +"</td>");             //序号
-  document.write("<td>" + name +"</td>");               //股票代码
+  //根据当日涨跌幅来显示每行股票行情的颜色
+  var color = "#FF0000";
+  if(nowChange < 0) {
+    color = "#009933";  
+  }
+  document.write("<tr style=color:" + color + ">");
+
+  document.write("<td>" + id +"</td>");             //序号
+
+  //股票代码，点击链接跳转至相应新浪股票实时行情网址
+  document.write("<td>" + "<a href=\"http://biz.finance.sina.com.cn/suggest/lookup_n.php?q=");
+  if(name >= 600000) {
+    document.write("sh");  
+  }
+  else {
+    document.write("sz");  
+  }
+  document.write(name + "\" target=\"_blank\">" + name + "</a>" + "</td>");
+
   document.write("<td>" + hqStr[0] + "</td>");          //股票名称
   document.write("<td>" + nowChange + "%</td>");        //当日涨跌
   document.write("<td>" + hqStr[3] + "</td>");          //当前价格
