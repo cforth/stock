@@ -20,6 +20,9 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   var totalChange = ((hqStr[3] - bidPrice) / bidPrice) * 100;
   totalChange = totalChange.toFixed(2);
 
+  var nowPrice = parseFloat(hqStr[3]);
+  nowPrice = nowPrice.toFixed(2);
+
   //根据当日涨跌幅来显示每行股票行情的颜色
   var color = (nowChange < 0) ? "#009933" : "#FF0000";
 
@@ -35,7 +38,7 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
 
   document.write("<td>" + hqStr[0] + "</td>");          //股票名称
   document.write("<td>" + nowChange + "%</td>");        //当日涨跌
-  document.write("<td>" + hqStr[3] + "</td>");          //当前价格
+  document.write("<td>" + nowPrice + "</td>");          //当前价格
   document.write("<td>" + industry + "</td>");          //行业分类
   document.write("<td>" + myDate + "</td>");            //关注日期
   document.write("<td>" + totalChange +"%</td>");       //累计涨跌
