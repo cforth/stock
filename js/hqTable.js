@@ -20,7 +20,6 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   document.write("<td>" + hqStr[0] + "</td>");          //股票名称
   document.write("<td>" + nowChange + "%</td>");        //当日涨跌
   document.write("<td>" + hqStr[3] + "</td>");          //当前价格
-  document.write("<td>" + hqStr[2] + "</td>");          //昨日收盘价
   document.write("<td>" + industry + "</td>");          //行业分类
   document.write("<td>" + myDate + "</td>");            //关注日期
   document.write("<td>" + totalChange +"%</td>");       //累计涨跌
