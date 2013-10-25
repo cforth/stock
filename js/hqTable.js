@@ -1,12 +1,17 @@
+//日期显示模块
 function putsDate() {
   var myDate=new Date();
   document.write( "日期:" + myDate.toLocaleDateString());  
 }
 
+
+//大盘指数显示模块
 function putsIndexQuotes(hqStr) {
   document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp" + hqStr[2] + "&nbsp" + hqStr[3] + "%");
 }
 
+
+//股票行情表格显示模块
 function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPrice) {
 
   var nowChange = ((hqStr[3] - hqStr[2]) / hqStr[2]) * 100;
@@ -16,23 +21,17 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   totalChange = totalChange.toFixed(2);
 
   //根据当日涨跌幅来显示每行股票行情的颜色
-  var color = "#FF0000";
-  if(nowChange < 0) {
-    color = "#009933";  
-  }
+  var color = (nowChange < 0) ? "#009933" : "#FF0000";
+
+  //根据市场，设置市场标示符
+  var market = (name >= 600000) ? "sh" : "sz";
+
   document.write("<tr style=color:" + color + ">");
 
   document.write("<td>" + id +"</td>");             //序号
 
   //股票代码，点击链接跳转至相应新浪股票实时行情网址
-  document.write("<td>" + "<a href=\"http://biz.finance.sina.com.cn/suggest/lookup_n.php?q=");
-  if(name >= 600000) {
-    document.write("sh");  
-  }
-  else {
-    document.write("sz");  
-  }
-  document.write(name + "\" target=\"_blank\">" + name + "</a>" + "</td>");
+  document.write("<td>" + "<a href=\"http://biz.finance.sina.com.cn/suggest/lookup_n.php?q=" + market + name + "\" target=\"_blank\">" + name + "</a>" + "</td>");
 
   document.write("<td>" + hqStr[0] + "</td>");          //股票名称
   document.write("<td>" + nowChange + "%</td>");        //当日涨跌
