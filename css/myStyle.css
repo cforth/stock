@@ -39,6 +39,10 @@ div#footer {
   margin-bottom:20px;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 h1 {
   margin-bottom:0;
   font-size:45px;
@@ -74,9 +78,26 @@ table,td,th {
 }
 
 table {
+  border-collapse:collapse;
   width:100%;
 }
 
 th {
   height:50px;
+}
+
+td {
+  padding:5px;
+}
+
+#stocktable {
+  text-align:right;
+}
+
+#sthead {
+  font-weight:bold;
+}
+
+#indexhead {
+  font-weight:bold;
 }
