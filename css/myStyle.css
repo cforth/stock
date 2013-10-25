@@ -1,5 +1,5 @@
 div#container {
-  width:1000px;
+  width:90%;
   margin:0 auto;
 }
 
@@ -12,31 +12,9 @@ div#header {
   margin-bottom:5px;
 }
 
-div#menu {
-  background-color:#FFE4C4;
-  color:#00BFFF;
-  width:155px;
-  height:1060px;
-  float:left;
-  padding:20px;
-  margin-right:5px;
-}
-
-div#content {
-  background-color:#EEEEEE;
-  width:760px;
-  height:1060px;
-  float:left;
-  padding:20px;
-  margin-bottom:5px;
-}
-
-div#footer {
-  background-color:#00BFFF;
-  color:#F5F5F5;
-  clear:both;
-  text-align:center;
-  margin-bottom:20px;
+input {
+  font-size:20px;
+  color:#0000FF;
 }
 
 body {
