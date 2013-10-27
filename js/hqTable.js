@@ -9,7 +9,7 @@ function putsDate() {
 function putsIndexQuotes(hqStr) {
   var color = putsColor(hqStr[3]);
   document.write("<td style=color:" + color + ">");
-  document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp" + hqStr[2] + "&nbsp" + hqStr[3] + "%");
+  document.write(hqStr[0] + ":&nbsp" + hqStr[1] + "&nbsp&nbsp" + hqStr[2] + "&nbsp&nbsp" + hqStr[3] + "%");
   document.write("</td>");
 }
 
