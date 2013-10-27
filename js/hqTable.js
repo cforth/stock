@@ -7,7 +7,16 @@ function putsDate() {
 
 //大盘指数显示模块
 function putsIndexQuotes(hqStr) {
+  var color = putsColor(hqStr[3]);
+  document.write("<td style=color:" + color + ">");
   document.write(hqStr[0] + ":" + hqStr[1] + "&nbsp" + hqStr[2] + "&nbsp" + hqStr[3] + "%");
+  document.write("</td>");
+}
+
+
+//根据数值设置字的颜色
+function putsColor(nowChange) {
+  return (nowChange < 0) ? "#009933" : "#FF0000";
 }
 
 
@@ -24,7 +33,7 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   nowPrice = nowPrice.toFixed(2);
 
   //根据当日涨跌幅来显示每行股票行情的颜色
-  var color = (nowChange < 0) ? "#009933" : "#FF0000";
+  var color = putsColor(nowChange);
 
   //根据市场，设置市场标示符
   var market = (name >= 600000) ? "sh" : "sz";
