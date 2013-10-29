@@ -23,11 +23,12 @@ function putsColor(nowChange) {
 //股票行情表格显示模块
 function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPrice) {
 
+  //当股票当日停盘或者初始化而造成当前价格为0时，对涨跌幅不显示
   var nowChange = ((hqStr[3] - hqStr[2]) / hqStr[2]) * 100;
-  nowChange = nowChange.toFixed(2); 
+  nowChange = (nowChange == -100) ? "- . --" : nowChange.toFixed(2); 
 
   var totalChange = ((hqStr[3] - bidPrice) / bidPrice) * 100;
-  totalChange = totalChange.toFixed(2);
+  totalChange = (totalChange == -100) ? "- . --" : totalChange.toFixed(2);
 
   var nowPrice = parseFloat(hqStr[3]);
   nowPrice = nowPrice.toFixed(2);
