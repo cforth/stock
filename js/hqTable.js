@@ -43,7 +43,7 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   document.write("<td>" + id +"</td>");             //序号
 
   //股票代码，点击链接跳转至相应新浪股票实时行情网址
-http://finance.sina.com.cn/realstock/company/sh600000/nc.shtml
+  //http://finance.sina.com.cn/realstock/company/sh600000/nc.shtml
   document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + name + "</a>" + "</td>");
 
   document.write("<td>" + hqStr[0] + "</td>");          //股票名称
