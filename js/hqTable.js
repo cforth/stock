@@ -33,27 +33,28 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   var nowPrice = parseFloat(hqStr[3]);
   nowPrice = nowPrice.toFixed(2);
 
-  //根据当日涨跌幅来显示每行股票行情的颜色
-  var color = putsColor(nowChange);
+  //根据当日涨跌幅来显示当日涨跌列的颜色
+  var colorNow = putsColor(nowChange);
+
+  //根据累计涨跌幅来显示累计涨跌列的颜色
+  var colorTotal = putsColor(totalChange);
 
   //根据市场，设置市场标示符
   var market = (name >= 600000) ? "sh" : "sz";
 
-  document.write("<tr style=color:" + color + ">");
-
-  document.write("<td>" + id +"</td>");             //序号
+  document.write("<tr> <td>" + id +"</td>");             //序号
 
   //股票代码，点击链接跳转至相应新浪股票实时行情网址
   //http://finance.sina.com.cn/realstock/company/sh600000/nc.shtml
   document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + name + "</a>" + "</td>");
 
-  document.write("<td>" + hqStr[0] + "</td>");          //股票名称
-  document.write("<td>" + nowChange + "%</td>");        //当日涨跌
-  document.write("<td>" + nowPrice + "</td>");          //当前价格
-  document.write("<td>" + industry + "</td>");          //行业分类
-  document.write("<td>" + myDate + "</td>");            //关注日期
-  document.write("<td>" + totalChange +"%</td>");       //累计涨跌
-  document.write("<td>" + forecastPrice +"</td></tr>"); //目标价格
+  document.write("<td>" + hqStr[0] + "</td>");                                      //股票名称
+  document.write("<td style=color:" + colorNow +">" + nowChange + "%</td>");        //当日涨跌
+  document.write("<td style=color:" + colorNow +">" + nowPrice + "</td>");          //当前价格
+  document.write("<td>" + industry + "</td>");                                      //行业分类
+  document.write("<td>" + myDate + "</td>");                                        //关注日期
+  document.write("<td style=color:" + colorTotal +">" + totalChange +"%</td>");     //累计涨跌
+  document.write("<td>" + forecastPrice +"</td></tr>");                             //目标价格
 
 }
 
