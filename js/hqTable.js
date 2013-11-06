@@ -57,13 +57,13 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   //http://finance.sina.com.cn/realstock/company/sh600000/nc.shtml
   document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + name + "</a>" + "</td>");
 
-  document.write("<td>" + hqStr[0] + "</td>");                                      //股票名称
-  document.write("<td style=color:" + colorNow +">" + nowChange + "%</td>");        //当日涨跌
-  document.write("<td style=color:" + colorNow +">" + nowPrice + "</td>");          //当前价格
-  document.write("<td style=color:" + colorPoint + ">" + industry + "</td>");       //行业分类
-  document.write("<td>" + myDate + "</td>");                                        //关注日期
-  document.write("<td style=color:" + colorTotal +">" + totalChange +"%</td>");     //累计涨跌
-  document.write("<td>" + forecastPrice +"</td></tr>");                             //目标价格
+  document.write("<td style=color:" + colorPoint + ">" + hqStr[0] + "</td>");           //股票名称
+  document.write("<td style=color:" + colorNow +">" + nowChange + "%</td>");            //当日涨跌
+  document.write("<td style=color:" + colorNow +">" + nowPrice + "</td>");              //当前价格
+  document.write("<td style=color:" + colorPoint + ">" + industry + "</td>");           //行业分类
+  document.write("<td style=color:" + colorPoint + ">" + myDate + "</td>");             //关注日期
+  document.write("<td style=color:" + colorTotal +">" + totalChange +"%</td>");         //累计涨跌
+  document.write("<td style=color:" + colorPoint + ">" + forecastPrice +"</td></tr>");  //目标价格
 
 }
 
