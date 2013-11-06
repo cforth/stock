@@ -50,7 +50,7 @@ a {
 }
 
 table,td,th {
-  border:1px solid black;
+  border:1px solid #D6D9E0;
 }
 
 table {
@@ -72,6 +72,7 @@ td {
 }
 
 #sthead {
+  background-color:#D4EEFF;
   font-weight:bold;
 }
 
