@@ -39,6 +39,10 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   var nowPrice = parseFloat(hqStr[3]);
   nowPrice = nowPrice.toFixed(2);
 
+  //溢价空间计算
+  var premiumSpace = ((forecastPrice - hqStr[3]) / hqStr[3]) * 100;
+  premiumSpace = premiumSpace.toFixed(2);
+
   //根据当日涨跌幅来显示当日涨跌列的颜色
   var colorNow = putsColor(nowChange);
 
@@ -63,7 +67,8 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   document.write("<td style=color:" + colorPoint + ">" + industry + "</td>");           //行业分类
   document.write("<td style=color:" + colorPoint + ">" + myDate + "</td>");             //关注日期
   document.write("<td style=color:" + colorTotal +">" + totalChange +"%</td>");         //累计涨跌
-  document.write("<td style=color:" + colorPoint + ">" + forecastPrice +"</td></tr>");  //目标价格
+  document.write("<td style=color:" + colorPoint + ">" + forecastPrice +"</td>");       //目标价格
+  document.write("<td style=color:" + colorPoint + ">" + premiumSpace +"%</td></tr>");  //溢价空间
 
 }
 
