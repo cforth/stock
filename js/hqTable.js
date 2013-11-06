@@ -20,6 +20,12 @@ function putsColor(nowChange) {
 }
 
 
+//根据行业分类关键字给出醒目颜色
+function putsColorPoint(str, pointStr) {
+  return (str === pointStr) ? "#DAA520" : "000000";
+}
+
+
 //股票行情表格显示模块
 function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPrice) {
 
@@ -39,6 +45,9 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   //根据累计涨跌幅来显示累计涨跌列的颜色
   var colorTotal = putsColor(totalChange);
 
+  //关键行业分类加醒目颜色
+  var colorPoint = putsColorPoint(industry, "十大金股");
+
   //根据市场，设置市场标示符
   var market = (name >= 600000) ? "sh" : "sz";
 
@@ -51,7 +60,7 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   document.write("<td>" + hqStr[0] + "</td>");                                      //股票名称
   document.write("<td style=color:" + colorNow +">" + nowChange + "%</td>");        //当日涨跌
   document.write("<td style=color:" + colorNow +">" + nowPrice + "</td>");          //当前价格
-  document.write("<td>" + industry + "</td>");                                      //行业分类
+  document.write("<td style=color:" + colorPoint + ">" + industry + "</td>");       //行业分类
   document.write("<td>" + myDate + "</td>");                                        //关注日期
   document.write("<td style=color:" + colorTotal +">" + totalChange +"%</td>");     //累计涨跌
   document.write("<td>" + forecastPrice +"</td></tr>");                             //目标价格
