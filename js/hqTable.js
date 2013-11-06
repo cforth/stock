@@ -22,7 +22,7 @@ function putsColor(nowChange) {
 
 //根据行业分类关键字给出醒目颜色
 function putsColorPoint(str, pointStr) {
-  return (str === pointStr) ? "#DAA520" : "000000";
+  return (str === pointStr) ? "#DAA520" : "#10008F";
 }
 
 
