@@ -47,6 +47,7 @@ li {
 
 a {
   font-weight:bold;
+  text-decoration: none;
 }
 
 table,td,th {
