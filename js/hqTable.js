@@ -134,7 +134,7 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
   var colorTotal = putsColor(totalChange);
 
   //关键行业分类加醒目颜色
-  var colorPoint = putsColorPoint(industry, "十大金股");
+  var colorPoint = putsColorPoint(industry, "暂无");
 
   //根据市场，设置市场标示符
   var market = (name >= 600000) ? "sh" : "sz";
