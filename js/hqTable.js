@@ -82,18 +82,25 @@ function makeStockTable() {
   return makeTable;
 }
 
-//日期显示模块
-function putsDate() {
-  var myDate=new Date();
-  document.write( "日期:" + myDate.toLocaleDateString());  
-}
-
 
 //大盘指数显示模块
 function putsIndexQuotes(hqStr) {
   var color = putsColor(hqStr[3]);
   document.write("<td style=color:" + color + ">");
   document.write(hqStr[0] + ":&nbsp" + hqStr[1] + "&nbsp&nbsp" + hqStr[2] + "&nbsp&nbsp" + hqStr[3] + "%");
+  document.write("</td>");
+}
+
+
+//创业板指数显示模块
+function putsCYBQuotes(hqStr) {
+  var nowChange = hqStr[3] - hqStr[2];
+  var color = putsColor(nowChange);
+  nowChange = (hqStr[3] == 0) ? "---" : nowChange.toFixed(2); 
+  var nowChangePer = ((hqStr[3] - hqStr[2]) / hqStr[2]) * 100;
+  nowChangePer = (hqStr[3] == 0) ? "---" : nowChangePer.toFixed(2); 
+  document.write("<td style=color:" + color + ">");
+  document.write(hqStr[0] + ":&nbsp" + hqStr[3] + "&nbsp&nbsp" + nowChange + "&nbsp&nbsp" + nowChangePer + "%");
   document.write("</td>");
 }
 
