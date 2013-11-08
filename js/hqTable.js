@@ -106,7 +106,7 @@ function putsColor(nowChange) {
 
 //根据行业分类关键字给出醒目颜色
 function putsColorPoint(str, pointStr) {
-  return (str === pointStr) ? "#DAA520" : "#10008F";
+  return (str === pointStr) ? "#DAA520" : "#000000";
 }
 
 
@@ -143,9 +143,8 @@ function putsStockQuotes(id, name, hqStr, industry, myDate, bidPrice, forecastPr
 
   //股票代码，点击链接跳转至相应新浪股票实时行情网址
   //http://finance.sina.com.cn/realstock/company/sh600000/nc.shtml
-  document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + name + "</a>" + "</td>");
-
-  document.write("<td style=color:" + colorPoint + ">" + hqStr[0] + "</td>");           //股票名称
+  document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + name + "</a>" + "</td>");        //股票代码
+  document.write("<td>" + "<a href=\"http://finance.sina.com.cn/realstock/company/" + market + name + "/nc.shtml\" target=\"_blank\">" + hqStr[0] + "</a>" + "</td>");    //股票名称
   document.write("<td style=color:" + colorNow +">" + nowChange + "%</td>");            //当日涨跌
   document.write("<td style=color:" + colorNow +">" + nowPrice + "</td>");              //当前价格
   document.write("<td style=color:" + colorPoint + ">" + industry + "</td>");           //行业分类
