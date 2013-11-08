@@ -45,9 +45,20 @@ li {
   font-size:25px;
 }
 
-a {
+a:link {
+  color:#0000FF;
   font-weight:bold;
   text-decoration: none;
+}
+
+a:visited {
+  color:#0000FF;
+  font-weight:bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration:underline;
 }
 
 table,td,th {
