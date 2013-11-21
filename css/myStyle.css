@@ -83,6 +83,11 @@ td {
   font-weight:bold;
 }
 
+caption {
+  text-align:left;
+  background:#D6D9E0;
+}
+
 #sthead {
   background-color:#D4EEFF;
   font-weight:bold;
