@@ -1,6 +1,7 @@
 .container {
-  width:980px;
+  width:1111px;
   margin:0 auto;
+
 }
 
 input {
@@ -10,6 +11,7 @@ input {
 
 body {
   font-family: \5FAE\8F6F\96C5\9ED1;
+  background:  url(holder.gif) top center repeat-y;
 }
 
 h1 {
