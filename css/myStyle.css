@@ -1,15 +1,6 @@
-div#container {
-  width:90%;
+.container {
+  width:980px;
   margin:0 auto;
-}
-
-div#header {
-  background-color:#DAA520;
-  color:#F5F5F5;
-  text-align:center;
-  padding:5px;
-  margin-top:20px;
-  margin-bottom:5px;
 }
 
 input {
@@ -78,14 +69,15 @@ td {
   padding:5px;
 }
 
+caption {
+  font-weight:bold;
+  text-align:left;
+  background:#D6D9E0;
+}
+
 #stocktable {
   text-align:right;
   font-weight:bold;
-}
-
-caption {
-  text-align:left;
-  background:#D6D9E0;
 }
 
 #sthead {
