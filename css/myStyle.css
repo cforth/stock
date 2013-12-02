@@ -1,8 +1,22 @@
-.container {
-  
+div#container {
   width:1000px;
   margin:0 auto;
 
+}
+
+div#header {
+  background-color:#DAA520;
+  color:#F5F5F5;
+  text-align:center;
+  padding:5px;
+  margin-top:20px;
+  margin-bottom:5px;
+}
+
+div#footer {
+  font-size:5px;
+  text-align:center;
+  background:#D6D9E0;
 }
 
 input {
@@ -16,7 +30,7 @@ body {
 }
 
 h1 {
-  margin-bottom:0;
+  margin:0;
   font-size:45px;
 }
 
