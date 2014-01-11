@@ -1,27 +1,30 @@
-div#container {
-  width:1000px;
-  margin:0 auto;
-
+* {
+  margin:0;
+  padding:0;
+  border:0;
 }
 
+
 div#header {
-  background-color:#DAA520;
-  color:#F5F5F5;
-  border-style:outset;
+  height:60px;
+  background-color:#F1F1F1;
+  color:#0066CC;
+  border-style:none;
   text-align:center;
-  padding:5px;
-  margin-top:20px;
-  margin-bottom:5px;
+  /*text-indent:10px;*/
+  margin-bottom:10px;
 }
 
 div#main {
+  width:1000px;
+  margin:0 auto;
   height:auto!important;
   min-height:1000px;
 }
 
 div#footer {
   text-align:center;
-  background:#D6D9E0;
+  background-color:#F1F1F1;
 }
 
 input {
@@ -31,7 +34,10 @@ input {
 
 body {
   font-family: \5FAE\8F6F\96C5\9ED1;
-  background:#f9f9f9  url(holder.gif) top center repeat-y;
+}
+
+p {
+  padding:5px;
 }
 
 h1 {
@@ -95,7 +101,7 @@ td {
 caption {
   font-weight:bold;
   text-align:left;
-  background:#D6D9E0;
+  background-color:#F1F1F1;
 }
 
 #stocktable {
