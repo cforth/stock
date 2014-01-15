@@ -3,10 +3,8 @@
 function urlMake(arr) {
   var url = "http://api.money.126.net/data/feed/";
   var length = arr.length;
-  var id;
   for(var i=0; i<length; i++) {
-    id = (arr[i][0] < 600000) ? ("1" + arr[i][0]) : ("0" + arr[i][0]);
-    url = url + id + ",";
+    url = url + arr[i][0] + ",";
   }
   url += "money.api";
 
@@ -38,10 +36,10 @@ function emptyTableMake(name, arr) {
 
   for(var i=0;i<arr.length;i++) {
     row = i + 1;
-    id = (arr[i][0] < 600000) ? ("1" + arr[i][0]) : ("0" + arr[i][0]);
+    id = arr[i][0];
     document.write("<tr>");
     document.write("<td id=\"" + name + "L" + i +"R0\">"+ row + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R1\">"+ "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + arr[i][0] + "</a>" + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R1\">"+ "--" + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R2\">"+ " " + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R3\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R4\">"+ 0.00 + "</td>");
@@ -63,7 +61,8 @@ function tableMake(arr, data, name) {
   
   for(var i=0;i<length;i++) {
     //跟新相应格子中的数据
-    id = (hqArr[i][0] < 600000) ? ("1" + arr[i][0]) : ("0" + arr[i][0]);
+    id = hqArr[i][0];
+    document.getElementById(name +"L" + i + "R1").innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
     document.getElementById(name +"L" + i + "R2").innerHTML = data[id]["name"]; 
     document.getElementById(name +"L" + i + "R3").innerHTML = (data[id]["percent"] * 100).toFixed(2); 
     document.getElementById(name +"L" + i + "R4").innerHTML = (data[id]["price"]).toFixed(2); 
