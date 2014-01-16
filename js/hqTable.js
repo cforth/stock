@@ -17,8 +17,8 @@ function emptyTableMake(name, arr) {
   var row, id;
 
   document.write("<table id=\"stocktable\" class=\"sortable\" >\
-    <caption>\
-      网页版行情\
+    <caption id=\"stockTime\">\
+      网页版行情 \
     <\/captain>\
       <tr id=\"sthead\">\
         <td>序号<\/td>\
@@ -58,6 +58,9 @@ function emptyTableMake(name, arr) {
 function tableMake(arr, data, name) {
   var length = arr.length;
   var id, changeNode, priceNode, totalChangeNode;
+  
+  //显示行情更新时间
+  document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + data[hqArr[0][0]]["update"] + ")";
   
   for(var i=0;i<length;i++) {
     //跟新相应格子中的数据
