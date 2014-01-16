@@ -1,10 +1,16 @@
 /******************************************************/
 //根据股票行情数组来创建126股票数据接口的url请求
-function urlMake(arr) {
+function urlMake(iarr, harr) {
   var url = "http://api.money.126.net/data/feed/";
-  var length = arr.length;
-  for(var i=0; i<length; i++) {
-    url = url + arr[i][0] + ",";
+  var ilength = iarr.length;
+  var hlength = harr.length;
+
+  for(var i=0; i<ilength; i++) {
+    url = url + iarr[i] + ",";
+  }
+  
+  for(var i=0; i<hlength; i++) {
+    url = url + harr[i][0] + ",";
   }
   url += "money.api";
 
@@ -97,9 +103,10 @@ function tableMake(arr, data, name) {
 }
 
 
-//根据json数据更新股票行情,其中使用到了全局数组hqArr
+//根据json数据更新指数与股票行情,其中使用到了全局数组indexArr与hqArr
 function stockArrayMake(data) {
   
+  indexMake(indexArr, data, "index");  
   tableMake(hqArr, data, "gdzq");  
 
 }
@@ -127,14 +134,6 @@ function indexMake(arr, data, name) {
       changeNode.style.color = "green";
     }
   }
-}
-
-
-//根据json数据更新指数行情,其中使用到了全局数组indexArr
-function indexArrayMake(data) {
-  
-  indexMake(indexArr, data, "index");  
-
 }
 
 

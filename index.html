@@ -143,15 +143,12 @@
           ["1002313", "通信设备", "2013-10-14", "19.96", "20.00"]
         );
         
-        var indexUrl = "http://api.money.126.net/data/feed/1399006,1399001,0000001,money.api";
-        var gdzqUrl = urlMake(hqArr);
+        var gdzqUrl = urlMake(indexArr, hqArr);
         
         emptyTableMake("gdzq", hqArr);
 
         // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
-        doJsonp(indexUrl, indexArrayMake, 20000);
         doJsonp(gdzqUrl, stockArrayMake, 20000);
-        setInterval("doJsonp(indexUrl, indexArrayMake, 20000)", "5000");
         setInterval("doJsonp(gdzqUrl, stockArrayMake, 20000)", "5000");
       </script>
 
