@@ -151,7 +151,11 @@
 
         // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
         doJsonp(gdzqUrl, stockArrayMake, 20000);
-        setInterval("doJsonp(gdzqUrl, stockArrayMake, 20000)", "5000");
+
+        var nowTime = new Date();
+        if(nowTime.getHours() >= 9 && nowTime.getHours() <= 15) {
+          setInterval("doJsonp(gdzqUrl, stockArrayMake, 20000)", "5000");
+        }
       </script>
 
       <p>1,点击每列“标题栏”可进行排序，如点击“当日涨跌”可按照涨幅或跌幅进行排序。</p>
