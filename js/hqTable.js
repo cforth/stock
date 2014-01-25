@@ -30,11 +30,11 @@ function emptyTableMake(name, arr) {
         <td>序号<\/td>\
         <td>股票代码<\/td>\
         <td>股票名称<\/td>\
-        <td>当日涨幅%<\/td>\
+        <td>当日涨跌%<\/td>\
         <td>当前价格<\/td>\
         <td>行业分类<\/td>\
         <td>关注日期<\/td>\
-        <td>累计涨幅%<\/td>\
+        <td>累计涨跌%<\/td>\
         <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
       <\/tr>");
