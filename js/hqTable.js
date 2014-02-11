@@ -37,6 +37,7 @@ function emptyTableMake(name, arr) {
         <td>累计涨跌%<\/td>\
         <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
+        <td>评级<\/td>\
       <\/tr>");
 
 
@@ -54,6 +55,7 @@ function emptyTableMake(name, arr) {
     document.write("<td id=\"" + name + "L" + i +"R7\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R8\">"+ arr[i][4] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R10\">"+ arr[i][5] + "</td>");
     document.write("</tr>");
   }
   document.write("</table>");
