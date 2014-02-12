@@ -263,7 +263,7 @@ sorttable = {
     if (isNaN(aa)) aa = 0;
     bb = parseFloat(b[0].replace(/[^0-9.-]/g,''));
     if (isNaN(bb)) bb = 0;
-    return aa-bb;
+    return bb-aa; //Reverse
   },
   sort_alpha: function(a,b) {
     if (a[0]==b[0]) return 0;
