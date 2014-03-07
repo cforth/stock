@@ -65,13 +65,13 @@ li {
 }
 
 a:link {
-  color:#0000FF;
+  color:#0000D0;
   font-weight:bold;
   text-decoration: none;
 }
 
 a:visited {
-  color:#0000FF;
+  color:#0000D0;
   font-weight:bold;
   text-decoration: none;
 }
@@ -110,8 +110,9 @@ caption {
 }
 
 #sthead {
-  background-color:#D4EEFF;
   font-weight:bold;
+  color:#0000D0;
+  cursor:pointer;
 }
 
 #indexhead {
