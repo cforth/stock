@@ -27,13 +27,12 @@ function emptyTableMake(name, arr) {
       网页版行情 \
     <\/captain>\
       <tr id=\"sthead\">\
-        <td>序号<\/td>\
+        <td>关注日期<\/td>\
         <td>股票代码<\/td>\
         <td>股票名称<\/td>\
         <td>当日涨跌%<\/td>\
         <td>当前价格<\/td>\
         <td>行业分类<\/td>\
-        <td>关注日期<\/td>\
         <td>累计涨跌%<\/td>\
         <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
@@ -42,16 +41,14 @@ function emptyTableMake(name, arr) {
 
 
   for(var i=0;i<arr.length;i++) {
-    row = i + 1;
     id = arr[i][0];
     document.write("<tr>");
-    document.write("<td id=\"" + name + "L" + i +"R0\">"+ row + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R0\">"+ arr[i][2] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R1\">"+ "--" + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R2\">"+ " " + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R3\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R4\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R5\">"+ arr[i][1] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R6\">"+ arr[i][2] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R7\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R8\">"+ arr[i][4] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
