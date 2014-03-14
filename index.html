@@ -10,7 +10,16 @@
   <script src="js/hqTable.js" type="text/javascript"></script>
   <script src="js/sortTable.js" type="text/javascript"></script>
   <script src="js/stockArr.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <title>投资决策参考</title>
+
+  <script type="text/javascript"> 
+    $(document).ready(function(){
+      $(".flip").click(function(){
+        $(".panel").slideToggle("slow");
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -20,8 +29,8 @@
     <div id="header">
       <h1>投 资 决 策 参 考</h1>
     </div>
-
-    <div id="main">
+    <p class="flip">点此</p>
+    <div id="main" class="panel">
 
       <table id="indexhead">
         <caption>
@@ -55,7 +64,7 @@
           setInterval("doJsonp(gdzqUrl, stockArrayMake, 20000)", "5000");
         }
       </script>
-
+ 
       <p>1,点击每列“标题栏”可进行排序，如点击“当日涨跌”可按照涨幅或跌幅进行排序。</p>
       <p>2,网页行情每5秒自动更新一次，点击股票代码跳转至网易股票相应行情界面。</p>    
       <p>3,“目标价”的期限为6个月，如“2013-10-01”日关注，那么目标日期为“2014-3-31”日。</p>
