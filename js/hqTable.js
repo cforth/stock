@@ -33,6 +33,7 @@ function emptyTableMake(name, arr) {
         <td>当日涨跌%<\/td>\
         <td>当前价格<\/td>\
         <td>行业分类<\/td>\
+        <td>日均涨跌%<\/td>\
         <td>累计涨跌%<\/td>\
         <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
@@ -49,6 +50,7 @@ function emptyTableMake(name, arr) {
     document.write("<td id=\"" + name + "L" + i +"R3\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R4\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R5\">"+ arr[i][1] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R6\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R7\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R8\">"+ arr[i][4] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
@@ -59,10 +61,23 @@ function emptyTableMake(name, arr) {
 }
 
 
+//计算总涨幅
+function totalChange(now, old) {
+  return (now - old) * 100.0 / old;
+}
+
+
+//计算日均涨幅
+function dailyChange(change, dayStr) {
+  var days = Math.round(((new Date()).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000);
+  return change / (days + 1);
+}
+
+
 //跟新表格中的行情数据
 function tableMake(arr, data, name) {
   var length = arr.length;
-  var id, changeNode, priceNode, totalChangeNode;
+  var id, changeNode, priceNode, totalChangeNode, dailyChangeNode, change;
   
   //显示行情更新时间
   document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + data[hqArr[0][0]]["update"] + ")";
@@ -70,11 +85,13 @@ function tableMake(arr, data, name) {
   for(var i=0;i<length;i++) {
     //跟新相应格子中的数据
     id = hqArr[i][0];
+    change = totalChange(data[id]["price"], hqArr[i][3]);
     document.getElementById(name +"L" + i + "R1").innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
     document.getElementById(name +"L" + i + "R2").innerHTML = data[id]["name"]; 
     document.getElementById(name +"L" + i + "R3").innerHTML = (data[id]["percent"] * 100).toFixed(2); 
     document.getElementById(name +"L" + i + "R4").innerHTML = (data[id]["price"]).toFixed(2); 
-    document.getElementById(name +"L" + i + "R7").innerHTML = (((data[id]["price"] - hqArr[i][3]) / hqArr[i][3]) * 100).toFixed(2);
+    document.getElementById(name +"L" + i + "R6").innerHTML = (dailyChange(change, arr[i][2])).toFixed(2); 
+    document.getElementById(name +"L" + i + "R7").innerHTML = change.toFixed(2);
     document.getElementById(name +"L" + i + "R9").innerHTML = (((hqArr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
 
     //根据数据内容调整字体颜色
@@ -90,11 +107,14 @@ function tableMake(arr, data, name) {
     }
 
     totalChangeNode = document.getElementById(name + "L" + i +"R7");
+    dailyChangeNode = document.getElementById(name + "L" + i +"R6");
     if (totalChangeNode.innerHTML >= 0) {
       totalChangeNode.style.color = "red";
+      dailyChangeNode.style.color = "red";
     }
     else {
       totalChangeNode.style.color = "green";
+      dailyChangeNode.style.color = "green";
     }
   
   }
