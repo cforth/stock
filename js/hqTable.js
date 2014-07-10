@@ -38,6 +38,7 @@ function emptyTableMake(name, arr) {
         <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
         <td>评级<\/td>\
+        <td>实时业绩<\/td>\
       <\/tr>");
 
 
@@ -55,6 +56,7 @@ function emptyTableMake(name, arr) {
     document.write("<td id=\"" + name + "L" + i +"R8\">"+ arr[i][4] + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R10\">"+ arr[i][5] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R11\">"+ "--" + "</td>");
     document.write("</tr>");
   }
   document.write("</table>");
@@ -73,11 +75,26 @@ function dailyChange(change, dayStr) {
   return change / (days + 1);
 }
 
+//计算实际日均与目标日均之间的差，返回优秀、良好、差评
+function dailyGrade(nowDaily, old, target) {
+  var dailyTarget = totalChange(target, old);
+  var dailyTargetChange = dailyTarget / 180;
+  var grade = nowDaily - dailyTargetChange;
+  if(grade > 0 || grade ==0) {
+    return "优秀";
+  }
+  else if(nowDaily > 0 || nowDaily == 0) {
+    return "良好";
+  }
+  else {
+    return "差评";
+  }
+}
 
 //跟新表格中的行情数据
 function tableMake(arr, data, name) {
   var length = arr.length;
-  var id, changeNode, priceNode, totalChangeNode, dailyChangeNode, change;
+  var id, daily, changeNode, priceNode, totalChangeNode, dailyChangeNode, change;
   
   //显示行情更新时间
   document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + data[hqArr[0][0]]["update"] + ")";
@@ -86,13 +103,15 @@ function tableMake(arr, data, name) {
     //跟新相应格子中的数据
     id = hqArr[i][0];
     change = totalChange(data[id]["price"], hqArr[i][3]);
+    daily = dailyChange(change, arr[i][2]);
     document.getElementById(name +"L" + i + "R1").innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
     document.getElementById(name +"L" + i + "R2").innerHTML = data[id]["name"]; 
     document.getElementById(name +"L" + i + "R3").innerHTML = (data[id]["percent"] * 100).toFixed(2); 
     document.getElementById(name +"L" + i + "R4").innerHTML = (data[id]["price"]).toFixed(2); 
-    document.getElementById(name +"L" + i + "R6").innerHTML = (dailyChange(change, arr[i][2])).toFixed(2); 
+    document.getElementById(name +"L" + i + "R6").innerHTML = daily.toFixed(2); 
     document.getElementById(name +"L" + i + "R7").innerHTML = change.toFixed(2);
     document.getElementById(name +"L" + i + "R9").innerHTML = (((hqArr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
+    document.getElementById(name +"L" + i + "R11").innerHTML = dailyGrade(daily, hqArr[i][3], hqArr[i][4]);
 
     //根据数据内容调整字体颜色
     changeNode = document.getElementById(name + "L" + i +"R3");

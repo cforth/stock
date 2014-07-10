@@ -16,8 +16,9 @@ div#header {
 }
 
 div#main {
-  width:1000px;
   margin:0 auto;
+  padding-left:20px;
+  padding-right:20px;
   height:auto!important;
   min-height:1000px;
 }
@@ -40,6 +41,11 @@ p {
   padding:5px;
 }
 
+.mystate {
+  font-size:16px;
+  color:#606060;
+}
+
 h1 {
   margin:0;
   font-size:45px;
@@ -55,13 +61,9 @@ h3 {
   font-size:25px;
 }
   
-ul {
-  margin:0;
-}
-
-li {
-  list-style:none;
-  font-size:25px;
+ol {
+  padding-left:30px;
+  padding-right:30px;
 }
 
 a:link {
