@@ -108,7 +108,10 @@ caption {
 
 #stocktable {
   text-align:right;
-  font-weight:bold;
+}
+
+#historytable {
+  text-align:right;
 }
 
 #sthead {
@@ -118,6 +121,5 @@ caption {
 }
 
 #indexhead {
-  font-weight:bold;
   text-align:center;
 }
