@@ -55,16 +55,16 @@
 
       <script>
         
-        var gdzqUrl = urlMake(indexArr, hqArr);
+        var stockUrl = urlMake(indexArr, hqArr);
         
-        emptyTableMake("gdzq", hqArr);
+        emptyTableMake("stock", hqArr);
 
         // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
-        doJsonp(gdzqUrl, stockArrayMake, 20000);
+        doJsonp(stockUrl, stockArrayMake, 20000);
 
         var nowTime = new Date();
         if(nowTime.getHours() >= 9 && nowTime.getHours() <= 15) {
-          setInterval("doJsonp(gdzqUrl, stockArrayMake, 20000)", "5000");
+          setInterval("doJsonp(stockUrl, stockArrayMake, 20000)", "5000");
         }
       </script>
       

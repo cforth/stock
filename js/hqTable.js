@@ -157,7 +157,7 @@ function tableMake(arr, data, name) {
 function stockArrayMake(data) {
   
   indexMake(indexArr, data, "index");  
-  tableMake(hqArr, data, "gdzq");  
+  tableMake(hqArr, data, "stock");  
 
 }
 
