@@ -32,10 +32,11 @@ function emptyTableMake(name, arr) {
         <td>股票名称<\/td>\
         <td>当日涨跌%<\/td>\
         <td>当前价格<\/td>\
+        <td>成交量(万)<\/td>\
         <td>行业分类<\/td>\
+        <td>目标价(6个月)<\/td>\
         <td>日均涨跌%<\/td>\
         <td>累计涨跌%<\/td>\
-        <td>目标价(6个月)<\/td>\
         <td>溢价空间%<\/td>\
         <td>关注天数<\/td>\
         <td>评级<\/td>\
@@ -51,14 +52,15 @@ function emptyTableMake(name, arr) {
     document.write("<td id=\"" + name + "L" + i +"R2\">"+ " " + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R3\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R4\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R5\">"+ arr[i][1] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R6\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R7\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R8\">"+ arr[i][4] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R5\">"+ 0.00 + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R6\">"+ arr[i][1] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R7\">"+ arr[i][4] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R8\">"+ 0.00 + "</td>");
     document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R10\">"+ 0 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R11\">"+ arr[i][5] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R12\">"+ "--" + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R10\">"+ 0.00 + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R11\">"+ 0 + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R12\">"+ arr[i][5] + "</td>");
+    document.write("<td id=\"" + name + "L" + i +"R13\">"+ "--" + "</td>");
     document.write("</tr>");
   }
   document.write("</table>");
@@ -116,11 +118,12 @@ function tableMake(arr, data, name) {
     document.getElementById(name +"L" + i + "R2").innerHTML = data[id]["name"]; 
     document.getElementById(name +"L" + i + "R3").innerHTML = (data[id]["percent"] * 100).toFixed(2); 
     document.getElementById(name +"L" + i + "R4").innerHTML = (data[id]["price"]).toFixed(2); 
-    document.getElementById(name +"L" + i + "R6").innerHTML = daily.toFixed(2); 
-    document.getElementById(name +"L" + i + "R7").innerHTML = change.toFixed(2);
-    document.getElementById(name +"L" + i + "R9").innerHTML = (((arr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
-    document.getElementById(name +"L" + i + "R10").innerHTML = days;
-    document.getElementById(name +"L" + i + "R12").innerHTML = dailyGrade(daily, arr[i][3], arr[i][4]);
+    document.getElementById(name +"L" + i + "R5").innerHTML = (data[id]["volume"] / 10000).toFixed(2); 
+    document.getElementById(name +"L" + i + "R8").innerHTML = daily.toFixed(2); 
+    document.getElementById(name +"L" + i + "R9").innerHTML = change.toFixed(2);
+    document.getElementById(name +"L" + i + "R10").innerHTML = (((arr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
+    document.getElementById(name +"L" + i + "R11").innerHTML = days;
+    document.getElementById(name +"L" + i + "R13").innerHTML = dailyGrade(daily, arr[i][3], arr[i][4]);
 
     //根据数据内容调整字体颜色
     changeNode = document.getElementById(name + "L" + i +"R3");
@@ -134,8 +137,8 @@ function tableMake(arr, data, name) {
       priceNode.style.color = "green";
     }
 
-    totalChangeNode = document.getElementById(name + "L" + i +"R7");
-    dailyChangeNode = document.getElementById(name + "L" + i +"R6");
+    totalChangeNode = document.getElementById(name + "L" + i +"R9");
+    dailyChangeNode = document.getElementById(name + "L" + i +"R8");
     if (totalChangeNode.innerHTML >= 0) {
       totalChangeNode.style.color = "red";
       dailyChangeNode.style.color = "red";
