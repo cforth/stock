@@ -75,9 +75,7 @@ function totalChange(now, old) {
 
 //计算关注股票的总计天数
 function getDays(dayStr, nowDayStr) {
-  dayStr = dayStr.replace(/-/ig, ",");
-  nowDayStr = nowDayStr.replace(/-/ig, ",");
-  return Math.round(((new Date(nowDayStr)).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000);
+  return Math.round(((new Date(nowDayStr)).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000) + 1;
 }
 
 
