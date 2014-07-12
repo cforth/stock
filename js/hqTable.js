@@ -73,9 +73,31 @@ function totalChange(now, old) {
 }
 
 
+//为了兼容IE浏览器日期对象，处理“2014-07-01”格式的日期字符串。
+function newDate(str) { 
+  str = str.split('-'); 
+  var date = new Date(); 
+  date.setUTCFullYear(str[0], str[1] - 1, str[2]); 
+  date.setUTCHours(0, 0, 0, 0); 
+  return date; 
+}
+
+
+
+//为了兼容IE浏览器日期对象，处理“2014/07/01 15:05:00”格式的日期字符串。
+function stockNewDate(str) { 
+  str = str.split(' ');
+  str = str[0].split('/');
+  var date = new Date(); 
+  date.setUTCFullYear(str[0], str[1] - 1, str[2]); 
+  date.setUTCHours(0, 0, 0, 0); 
+  return date; 
+}
+
+
 //计算关注股票的总计天数
 function getDays(dayStr, nowDayStr) {
-  return Math.round(((new Date(nowDayStr)).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000) + 1;
+  return Math.round(((stockNewDate(nowDayStr)).getTime() - (newDate(dayStr)).getTime()) / 60 / 60 / 24 / 1000) + 1;
 }
 
 
