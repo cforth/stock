@@ -84,7 +84,7 @@ a:hover {
 }
 
 table,td,th {
-  border:1px solid #D6D9E0;
+  border:1px solid #C9C9C9;
 }
 
 table {
@@ -93,7 +93,13 @@ table {
 }
 
 th {
-  height:50px;
+  background-color:#CDE5FC;
+  cursor:pointer;
+  padding:5px;
+}
+
+.yellow {
+  background-color:#FCFC77;
 }
 
 td {
@@ -112,12 +118,6 @@ caption {
 
 #historytable {
   text-align:right;
-}
-
-#sthead {
-  font-weight:bold;
-  color:#0000D0;
-  cursor:pointer;
 }
 
 #indexhead {

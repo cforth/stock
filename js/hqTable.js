@@ -26,21 +26,21 @@ function emptyTableMake(name, arr) {
     <caption id=\"stockTime\">\
       网页版行情 \
     <\/captain>\
-      <tr id=\"sthead\">\
-        <td>关注日期<\/td>\
-        <td>股票代码<\/td>\
-        <td>股票名称<\/td>\
-        <td>当日涨跌%<\/td>\
-        <td>当前价格<\/td>\
-        <td>成交量(万)<\/td>\
-        <td>行业分类<\/td>\
-        <td>目标价(6个月)<\/td>\
-        <td>日均涨跌%<\/td>\
-        <td>累计涨跌%<\/td>\
-        <td>溢价空间%<\/td>\
-        <td>关注天数<\/td>\
-        <td>评级<\/td>\
-        <td>实时业绩<\/td>\
+      <tr>\
+        <th>关注日期<\/th>\
+        <th>股票代码<\/th>\
+        <th>股票名称<\/th>\
+        <th>当日涨跌%<\/th>\
+        <th>当前价格<\/th>\
+        <th>成交量(万)<\/th>\
+        <th>行业分类<\/th>\
+        <th class=\"yellow\">目标价(6个月)<\/th>\
+        <th class=\"yellow\">日均涨跌%<\/th>\
+        <th class=\"yellow\">累计涨跌%<\/th>\
+        <th class=\"yellow\">溢价空间%<\/th>\
+        <th class=\"yellow\">关注天数<\/th>\
+        <th class=\"yellow\">评级<\/th>\
+        <th class=\"yellow\">实时业绩<\/th>\
       <\/tr>");
 
 
@@ -75,7 +75,9 @@ function totalChange(now, old) {
 
 //计算关注股票的总计天数
 function getDays(dayStr, nowDayStr) {
-  return Math.round(((new Date(nowDayStr)).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000) + 1;
+  dayStr = dayStr.replace(/-/ig, ",");
+  nowDayStr = nowDayStr.replace(/-/ig, ",");
+  return Math.round(((new Date(nowDayStr)).getTime() - (new Date(dayStr)).getTime()) / 60 / 60 / 24 / 1000);
 }
 
 
