@@ -18,11 +18,10 @@ function urlMake(iarr, harr) {
 }
 
 
-//初始化股票行情表格，并给每个单元格设置id，如第3行第2列，则此单元格id为name+“L2R1”
+//初始化股票行情表格，以股票代码作为每行的id。
 function emptyTableMake(name, arr) {
-  var row, id;
 
-  document.write("<table id=\"stocktable\" class=\"sortable\" >\
+  document.write("<table id=\"" + name + "Table\" class=\"sortable\" >\
     <caption id=\"stockTime\">\
       网页版行情 \
     <\/captain>\
@@ -45,23 +44,22 @@ function emptyTableMake(name, arr) {
 
 
   for(var i=0;i<arr.length;i++) {
-    id = arr[i][0];
-    document.write("<tr>");
-    document.write("<td id=\"" + name + "L" + i +"R0\">"+ arr[i][2] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R1\">"+ "--" + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R2\">"+ " " + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R3\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R4\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R5\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R6\">"+ arr[i][1] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R7\">"+ arr[i][4] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R8\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R9\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R10\">"+ 0.00 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R11\">"+ 0 + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R12\">"+ arr[i][5] + "</td>");
-    document.write("<td id=\"" + name + "L" + i +"R13\">"+ "--" + "</td>");
-    document.write("</tr>");
+    document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
+      <td>"+ arr[i][2] + "</td> \
+      <td>"+ "--" + "</td> \
+      <td>"+ " " + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ arr[i][1] + "</td> \
+      <td>"+ arr[i][4] + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0 + "</td> \
+      <td>"+ arr[i][5] + "</td> \
+      <td>"+ "--" + "</td> \
+    </tr>");
   }
   document.write("</table>");
 }
@@ -125,13 +123,12 @@ function dailyGrade(nowDaily, old, target) {
 //跟新表格中的行情数据
 function tableMake(arr, data, name) {
   var length = arr.length;
-  var id, days, daily, changeNode, priceNode, totalChangeNode, dailyChangeNode, change;
+  var id, days, daily, change, trNode;
   
   //显示行情更新时间
   document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + data[arr[0][0]]["update"] + ")";
   
   for(var i=0;i<length;i++) {
-    //跟新相应格子中的数据
     id = arr[i][0];
     days = getDays(arr[i][2], data[id]["update"]);
     //修复当日新增股票，但行情时间为昨日出现的bug。
@@ -140,38 +137,35 @@ function tableMake(arr, data, name) {
     }
     change = totalChange(data[id]["price"], arr[i][3]);
     daily = dailyChange(change, days);
-    document.getElementById(name +"L" + i + "R1").innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
-    document.getElementById(name +"L" + i + "R2").innerHTML = data[id]["name"]; 
-    document.getElementById(name +"L" + i + "R3").innerHTML = (data[id]["percent"] * 100).toFixed(2); 
-    document.getElementById(name +"L" + i + "R4").innerHTML = (data[id]["price"]).toFixed(2); 
-    document.getElementById(name +"L" + i + "R5").innerHTML = (data[id]["volume"] / 10000).toFixed(2); 
-    document.getElementById(name +"L" + i + "R8").innerHTML = daily.toFixed(2); 
-    document.getElementById(name +"L" + i + "R9").innerHTML = change.toFixed(2);
-    document.getElementById(name +"L" + i + "R10").innerHTML = (((arr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
-    document.getElementById(name +"L" + i + "R11").innerHTML = days;
-    document.getElementById(name +"L" + i + "R13").innerHTML = dailyGrade(daily, arr[i][3], arr[i][4]);
+    trNode = document.getElementById(name +  "Table" + arr[i][0]);
+    trNode.cells[1].innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
+    trNode.cells[2].innerHTML = data[id]["name"]; 
+    trNode.cells[3].innerHTML = (data[id]["percent"] * 100).toFixed(2); 
+    trNode.cells[4].innerHTML = (data[id]["price"]).toFixed(2); 
+    trNode.cells[5].innerHTML = (data[id]["volume"] / 10000).toFixed(2); 
+    trNode.cells[8].innerHTML = daily.toFixed(2); 
+    trNode.cells[9].innerHTML = change.toFixed(2);
+    trNode.cells[10].innerHTML = (((arr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
+    trNode.cells[11].innerHTML = days;
+    trNode.cells[13].innerHTML = dailyGrade(daily, arr[i][3], arr[i][4]);
 
     //根据数据内容调整字体颜色
-    changeNode = document.getElementById(name + "L" + i +"R3");
-    priceNode = document.getElementById(name + "L" + i +"R4");
-    if (changeNode.innerHTML >= 0) {
-      changeNode.style.color = "red";
-      priceNode.style.color = "red";
+    if (trNode.cells[3].innerHTML >= 0) {
+      trNode.cells[3].style.color = "red";
+      trNode.cells[4].style.color = "red";
     }
     else {
-      changeNode.style.color = "green";
-      priceNode.style.color = "green";
+      trNode.cells[3].style.color = "green";
+      trNode.cells[4].style.color = "green";
     }
 
-    totalChangeNode = document.getElementById(name + "L" + i +"R9");
-    dailyChangeNode = document.getElementById(name + "L" + i +"R8");
-    if (totalChangeNode.innerHTML >= 0) {
-      totalChangeNode.style.color = "red";
-      dailyChangeNode.style.color = "red";
+    if (trNode.cells[9].innerHTML >= 0) {
+      trNode.cells[9].style.color = "red";
+      trNode.cells[8].style.color = "red";
     }
     else {
-      totalChangeNode.style.color = "green";
-      dailyChangeNode.style.color = "green";
+      trNode.cells[9].style.color = "green";
+      trNode.cells[8].style.color = "green";
     }
   
   }
