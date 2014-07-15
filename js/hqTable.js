@@ -134,6 +134,10 @@ function tableMake(arr, data, name) {
     //跟新相应格子中的数据
     id = arr[i][0];
     days = getDays(arr[i][2], data[id]["update"]);
+    //修复当日新增股票，但行情时间为昨日出现的bug。
+    if (days < 1) {
+      days = 1;
+    }
     change = totalChange(data[id]["price"], arr[i][3]);
     daily = dailyChange(change, days);
     document.getElementById(name +"L" + i + "R1").innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
