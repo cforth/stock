@@ -212,20 +212,26 @@ function stockArrayMake(data) {
 //更新指数行情数据
 function indexMake(arr, data, name) {
   var length = arr.length;
-  var id, change, changeNode;
+  var id, change;
+  var trNode = document.getElementById(name + "Body");
 
-  for(var i=0;i<length;i++) {
+  for(var i=0, j=0;i<length;i++,j=j+3) {
     id = indexArr[i];
-    document.getElementById(name + i).innerHTML = (data[id]["price"]).toFixed(2) + "&nbsp&nbsp&nbsp&nbsp" + (data[id]["updown"]).toFixed(2) + "&nbsp&nbsp&nbsp&nbsp" + (data[id]["percent"] * 100).toFixed(2) + "%"; 
+    change = data[id]["updown"];
+    trNode.cells[j].innerHTML = (data[id]["price"]).toFixed(2); 
+    trNode.cells[j+1].innerHTML = change.toFixed(2);
+    trNode.cells[j+2].innerHTML = (data[id]["percent"] * 100).toFixed(2) + "%";
     
     //根据数据内容调整字体颜色
-    changeNode = document.getElementById(name + i);
-    change = data[id]["updown"];
     if (change >= 0) {
-      changeNode.style.color = "red";
+      trNode.cells[j].style.color = "red";
+      trNode.cells[j+1].style.color = "red";
+      trNode.cells[j+2].style.color = "red";
     }
     else {
-      changeNode.style.color = "green";
+      trNode.cells[j].style.color = "green";
+      trNode.cells[j+1].style.color = "green";
+      trNode.cells[j+2].style.color = "green";
     }
   }
 }
