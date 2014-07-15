@@ -18,6 +18,30 @@ function urlMake(iarr, harr) {
 }
 
 
+//初始化指数行情表格
+function emptyIndexMake(name, arr) {
+  document.write("<table id=\"" + name + "Head\"> \
+        <caption> \
+          大盘指数 \
+          <a href=\"http:\/\/cfishacker.com\/stock\/comments.html\" style=\"float:right\">留言板<\/a> \
+        <\/caption> \
+        <tr> \
+          <th colspan=\"3\">上证指数</th> \
+          <th colspan=\"3\">深证成指</th> \
+          <th colspan=\"3\">创业板指</th> \
+          <th colspan=\"3\">中小板指</th> \
+          <th colspan=\"3\">沪深300指</th> \
+        <\/tr> \
+        <tr id=\"" + name + "Body\"> ");
+
+  for(var i = 0; i < (arr.length) * 3; i++) {
+    document.write("<td>--<\/td>");
+  }
+  
+  document.write("<\/tr><\/table><br\/>");
+}
+
+
 //初始化股票行情表格，以股票代码作为每行的id。
 function emptyTableMake(name, arr) {
 
