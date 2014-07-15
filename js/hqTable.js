@@ -120,34 +120,59 @@ function dailyGrade(nowDaily, old, target) {
   }
 }
 
-//跟新表格中的行情数据
-function tableMake(arr, data, name) {
-  var length = arr.length;
-  var id, days, daily, change, trNode;
-  
-  //显示行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + data[arr[0][0]]["update"] + ")";
-  
-  for(var i=0;i<length;i++) {
-    id = arr[i][0];
-    days = getDays(arr[i][2], data[id]["update"]);
+
+//使用Hash数组保存股票行情信息。
+function stockDataMake(arr, data) {
+  var stockId, days, change, daily;
+  var stockData = new Array();
+  for(var i = 0; i < arr.length; i++) {
+    stockId = arr[i][0];
+    days = getDays(arr[i][2], data[stockId]["update"]);
     //修复当日新增股票，但行情时间为昨日出现的bug。
     if (days < 1) {
       days = 1;
     }
-    change = totalChange(data[id]["price"], arr[i][3]);
+    change = totalChange(data[stockId]["price"], arr[i][3]);
     daily = dailyChange(change, days);
+    stockData[stockId] = new Array();
+    stockData[stockId]["initDate"] = arr[i][2];
+    stockData[stockId]["symbol"] = data[stockId]["symbol"];
+    stockData[stockId]["name"] = data[stockId]["name"];
+    stockData[stockId]["percent"] = (data[stockId]["percent"] * 100).toFixed(2);
+    stockData[stockId]["price"] = (data[stockId]["price"]).toFixed(2);
+    stockData[stockId]["volume"] = (data[stockId]["volume"] / 10000).toFixed(2);
+    stockData[stockId]["daily"] = daily.toFixed(2);
+    stockData[stockId]["change"] = change.toFixed(2);
+    stockData[stockId]["space"] = (((arr[i][4] - data[stockId]["price"]) / data[stockId]["price"]) * 100).toFixed(2);
+    stockData[stockId]["days"] = days;
+    stockData[stockId]["grade"] = dailyGrade(daily, arr[i][3], arr[i][4]);
+    stockData[stockId]["update"] = data[stockId]["update"];
+  }
+  return stockData;
+}
+
+
+//跟新表格中的行情数据
+function tableMake(arr, stockData, name) {
+  var length = arr.length;
+  var id, days, trNode;
+  
+  //显示行情更新时间
+  document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + stockData[arr[0][0]]["update"] + ")";
+  
+  for(var i=0;i<length;i++) {
+    id = arr[i][0];
     trNode = document.getElementById(name +  "Table" + arr[i][0]);
-    trNode.cells[1].innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + data[id]["symbol"] + "</a>"; 
-    trNode.cells[2].innerHTML = data[id]["name"]; 
-    trNode.cells[3].innerHTML = (data[id]["percent"] * 100).toFixed(2); 
-    trNode.cells[4].innerHTML = (data[id]["price"]).toFixed(2); 
-    trNode.cells[5].innerHTML = (data[id]["volume"] / 10000).toFixed(2); 
-    trNode.cells[8].innerHTML = daily.toFixed(2); 
-    trNode.cells[9].innerHTML = change.toFixed(2);
-    trNode.cells[10].innerHTML = (((arr[i][4] - data[id]["price"]) / data[id]["price"]) * 100).toFixed(2);
-    trNode.cells[11].innerHTML = days;
-    trNode.cells[13].innerHTML = dailyGrade(daily, arr[i][3], arr[i][4]);
+    trNode.cells[1].innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + stockData[id]["symbol"] + "</a>"; 
+    trNode.cells[2].innerHTML = stockData[id]["name"]; 
+    trNode.cells[3].innerHTML = stockData[id]["percent"]; 
+    trNode.cells[4].innerHTML = stockData[id]["price"]; 
+    trNode.cells[5].innerHTML = stockData[id]["volume"]; 
+    trNode.cells[8].innerHTML = stockData[id]["daily"]; 
+    trNode.cells[9].innerHTML = stockData[id]["change"];
+    trNode.cells[10].innerHTML = stockData[id]["space"];
+    trNode.cells[11].innerHTML = stockData[id]["days"];
+    trNode.cells[13].innerHTML = stockData[id]["grade"];
 
     //根据数据内容调整字体颜色
     if (trNode.cells[3].innerHTML >= 0) {
@@ -175,9 +200,8 @@ function tableMake(arr, data, name) {
 
 //根据json数据更新指数与股票行情,其中使用到了全局数组indexArr与hqArr
 function stockArrayMake(data) {
-  
   indexMake(indexArr, data, "index");  
-  tableMake(hqArr, data, "stock");  
+  tableMake(hqArr, stockDataMake(hqArr, data), "stock");  
 
 }
 
