@@ -178,7 +178,7 @@ function stockDataMake(arr, data) {
 //跟新表格中的行情数据
 function tableMake(arr, stockData, name) {
   var length = arr.length;
-  var id, days, trNode;
+  var id, days, trNode, oldPrice;
   
   //显示行情更新时间
   document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + stockData[arr[0][0]]["update"] + ")";
@@ -186,6 +186,7 @@ function tableMake(arr, stockData, name) {
   for(var i=0;i<length;i++) {
     id = arr[i][0];
     trNode = document.getElementById(name +  "Table" + arr[i][0]);
+    oldPrice = trNode.cells[4].innerHTML;
     trNode.cells[1].innerHTML = "<a href=\"http:\/\/quotes.money.163.com\/" + id +".html\" target=\"_blank\">" + stockData[id]["symbol"] + "</a>"; 
     trNode.cells[2].innerHTML = stockData[id]["name"]; 
     trNode.cells[3].innerHTML = stockData[id]["percent"]; 
@@ -197,7 +198,17 @@ function tableMake(arr, stockData, name) {
     trNode.cells[11].innerHTML = stockData[id]["days"];
     trNode.cells[13].innerHTML = stockData[id]["grade"];
 
-    //根据数据内容调整字体颜色
+    //根据数据内容调整字体颜色,根据价格升降显示背景色
+    if (trNode.cells[4].innerHTML > oldPrice) {
+      trNode.cells[4].style.backgroundColor = "#FEEEEE";
+    }
+    else if(trNode.cells[4].innerHTML < oldPrice) {
+      trNode.cells[4].style.backgroundColor = "#EEFFED";
+    }
+    else {
+      trNode.cells[4].style.backgroundColor = "#FFFFFF";
+    }
+
     if (trNode.cells[3].innerHTML >= 0) {
       trNode.cells[3].style.color = "red";
       trNode.cells[4].style.color = "red";
