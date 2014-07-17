@@ -28,10 +28,8 @@ function emptyIndexMake(name, arr) {
         <tr> \
           <th colspan=\"3\">上证指数</th> \
           <th colspan=\"3\">深证成指</th> \
-          <th colspan=\"3\">沪深300指</th> \
           <th colspan=\"3\">创业板指</th> \
-          <th colspan=\"3\">中小板指</th> \
-          <th colspan=\"3\">B股指数</th> \
+          <th colspan=\"3\">沪深300指</th> \
         <\/tr> \
         <tr id=\"" + name + "Body\"> ");
 

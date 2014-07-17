@@ -4,6 +4,9 @@
   border:0;
 }
 
+div#container {
+  width:100%;
+}
 
 div#header {
   height:60px;
