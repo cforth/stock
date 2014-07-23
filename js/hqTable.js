@@ -65,24 +65,64 @@ function emptyTableMake(name, arr) {
         <th class=\"yellow\">实时业绩<\/th>\
       <\/tr>");
 
+  if(arr.length < 10) {
+    for(var i=0;i<arr.length;i++) {
+      document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
+        <td>"+ arr[i][2] + "</td> \
+        <td>"+ "--" + "</td> \
+        <td>"+ " " + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ arr[i][1] + "</td> \
+        <td>"+ arr[i][4] + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0 + "</td> \
+        <td>"+ arr[i][5] + "</td> \
+        <td>"+ "--" + "</td> \
+      </tr>");
+    }
+  }
+  else {
+    for(var i=0;i<15;i++) {
+      document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
+        <td>"+ arr[i][2] + "</td> \
+        <td>"+ "--" + "</td> \
+        <td>"+ " " + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ arr[i][1] + "</td> \
+        <td>"+ arr[i][4] + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0 + "</td> \
+        <td>"+ arr[i][5] + "</td> \
+        <td>"+ "--" + "</td> \
+      </tr>");
+    }
 
-  for(var i=0;i<arr.length;i++) {
-    document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
-      <td>"+ arr[i][2] + "</td> \
-      <td>"+ "--" + "</td> \
-      <td>"+ " " + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ arr[i][1] + "</td> \
-      <td>"+ arr[i][4] + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ 0.00 + "</td> \
-      <td>"+ 0 + "</td> \
-      <td>"+ arr[i][5] + "</td> \
-      <td>"+ "--" + "</td> \
-    </tr>");
+    for(var i=10;i<arr.length;i++) {
+      document.write("<tr class=\"hqtabledisplay\" id=\"" + name + "Table" + arr[i][0] + "\"> \
+        <td>"+ arr[i][2] + "</td> \
+        <td>"+ "--" + "</td> \
+        <td>"+ " " + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ arr[i][1] + "</td> \
+        <td>"+ arr[i][4] + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0.00 + "</td> \
+        <td>"+ 0 + "</td> \
+        <td>"+ arr[i][5] + "</td> \
+        <td>"+ "--" + "</td> \
+      </tr>");
+    }
   }
   document.write("</table>");
 }
