@@ -18,6 +18,40 @@ function urlMake(iarr, harr) {
 }
 
 
+//生成历史股票关注表格
+function historyTableMake(arr) {
+  var width = arr[0].length;
+  var length = arr.length;
+  document.write(
+    "<table id=\"historyTable\" class=\"sortable\"> \
+        <caption> \
+          已达成目标价的股票(" + length + "只) \
+        </caption> \
+         <tr>  \
+           <th>关注日期</th> \
+           <th>股票代码</th> \
+           <th>股票名称</th> \
+           <th>初始价格</th> \
+           <th>目标价格</th> \
+           <th>达成日收盘价</th> \
+           <th>累计涨幅%</th> \
+           <th>行业分类</th> \
+           <th>达成日期</th> \
+           <th>总计天数</th> \
+         </tr>");
+ 
+  for(var i=0; i<length; i++) {
+    document.write("<tr>");
+    for(var j=0; j<width; j++) {
+      document.write("<td>" + arr[i][j] + "</td>");
+    }
+    document.write("</tr>");    
+  }
+
+  document.write("</table>");
+}
+
+
 //初始化指数行情表格
 function emptyIndexMake(name, arr) {
   document.write("<table id=\"" + name + "Head\"> \
@@ -43,10 +77,10 @@ function emptyIndexMake(name, arr) {
 
 //初始化股票行情表格，以股票代码作为每行的id。默认显示15条股票行情信息。
 function emptyTableMake(name, arr) {
-
+  var length = arr.length;
   document.write("<table id=\"" + name + "Table\" class=\"sortable\" >\
     <caption id=\"stockTime\">\
-      网页版行情 \
+      网页版行情(" + length + "只) \
     <\/captain>\
       <tr>\
         <th>关注日期<\/th>\
@@ -66,7 +100,7 @@ function emptyTableMake(name, arr) {
       <\/tr>");
 
   if(arr.length < 15) {
-    for(var i=0;i<arr.length;i++) {
+    for(var i=0;i<length;i++) {
       document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
         <td>"+ arr[i][2] + "</td> \
         <td>"+ "--" + "</td> \
@@ -105,7 +139,7 @@ function emptyTableMake(name, arr) {
       </tr>");
     }
 
-    for(var i=15;i<arr.length;i++) {
+    for(var i=15;i<length;i++) {
       document.write("<tr class=\"hqtabledisplay\" id=\"" + name + "Table" + arr[i][0] + "\"> \
         <td>"+ arr[i][2] + "</td> \
         <td>"+ "--" + "</td> \
@@ -218,10 +252,8 @@ function stockDataMake(arr, data) {
 //跟新表格中的行情数据
 function tableMake(arr, stockData, name) {
   var length = arr.length;
+  var goodNum = ordNum = badNum = 0;
   var id, days, trNode, oldPrice;
-  
-  //显示行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情" + "(" + stockData[arr[0][0]]["update"] + ")";
   
   for(var i=0;i<length;i++) {
     id = arr[i][0];
@@ -266,8 +298,27 @@ function tableMake(arr, stockData, name) {
       trNode.cells[9].style.color = "green";
       trNode.cells[8].style.color = "green";
     }
-  
+    
+    switch(stockData[id]["grade"]) {
+    case "优秀":
+      goodNum += 1;
+      break;
+    case "良好":
+      ordNum += 1;
+      break;
+    case "差评":
+      badNum += 1;
+      break;
+    }
   }
+
+    goodNum = (goodNum * 100 / length).toFixed(2);
+    ordNum =  (ordNum * 100 / length).toFixed(2);
+    badNum =  (badNum * 100 / length).toFixed(2);
+
+  //显示行情更新时间
+  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + length + "只 优秀:" + goodNum +"% 良好:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
+  
 
 }
 
