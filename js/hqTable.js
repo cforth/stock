@@ -75,7 +75,7 @@ function emptyIndexMake(name, arr) {
 }
 
 
-//初始化股票行情表格，以股票代码作为每行的id。默认显示15条股票行情信息。
+//初始化股票行情表格，以股票代码作为每行的id。默认显示20条股票行情信息。
 function emptyTableMake(name, arr) {
   var length = arr.length;
   document.write("<table id=\"" + name + "Table\" class=\"sortable\" >\
@@ -99,7 +99,7 @@ function emptyTableMake(name, arr) {
         <th class=\"yellow\">实时业绩<\/th>\
       <\/tr>");
 
-  if(arr.length < 15) {
+  if(arr.length < 20) {
     for(var i=0;i<length;i++) {
       document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
         <td>"+ arr[i][2] + "</td> \
@@ -120,7 +120,7 @@ function emptyTableMake(name, arr) {
     }
   }
   else {
-    for(var i=0;i<15;i++) {
+    for(var i=0;i<20;i++) {
       document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
         <td>"+ arr[i][2] + "</td> \
         <td>"+ "--" + "</td> \
@@ -139,7 +139,7 @@ function emptyTableMake(name, arr) {
       </tr>");
     }
 
-    for(var i=15;i<length;i++) {
+    for(var i=20;i<length;i++) {
       document.write("<tr class=\"hqtabledisplay\" id=\"" + name + "Table" + arr[i][0] + "\"> \
         <td>"+ arr[i][2] + "</td> \
         <td>"+ "--" + "</td> \
