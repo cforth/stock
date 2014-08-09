@@ -19,11 +19,11 @@ function urlMake(iarr, harr) {
 
 
 //生成历史股票关注表格
-function historyTableMake(arr) {
+function historyTableMake(name, arr) {
   var width = arr[0].length;
   var length = arr.length;
   document.write(
-    "<table id=\"historyTable\" class=\"sortable\"> \
+    "<table id=\"" + name + "Table\" class=\"sortable\"> \
         <caption> \
           已达成目标价的股票(" + length + "只) \
         </caption> \
