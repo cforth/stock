@@ -201,7 +201,7 @@ function dailyChange(change, days) {
   return change / days;
 }
 
-//计算实际日均与目标日均之间的差，返回优秀、良好、差评
+//计算实际日均与目标日均之间的差，返回优秀、中性、差评
 function dailyGrade(nowDaily, old, target) {
   var dailyTarget = totalChange(target, old);
   var dailyTargetChange = dailyTarget / 180;
@@ -210,7 +210,7 @@ function dailyGrade(nowDaily, old, target) {
     return "优秀";
   }
   else if(nowDaily > 0 || nowDaily == 0) {
-    return "良好";
+    return "中性";
   }
   else {
     return "差评";
@@ -303,7 +303,7 @@ function tableMake(arr, stockData, name) {
     case "优秀":
       goodNum += 1;
       break;
-    case "良好":
+    case "中性":
       ordNum += 1;
       break;
     case "差评":
@@ -317,7 +317,7 @@ function tableMake(arr, stockData, name) {
     badNum =  (badNum * 100 / length).toFixed(2);
 
   //显示行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + length + "只 优秀:" + goodNum +"% 良好:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
+  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + length + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
   
 
 }
