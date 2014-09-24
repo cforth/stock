@@ -35,7 +35,11 @@ div#footer {
   display:none;
 }
 
-#morestock > button {
+.lsgzdisplay {
+  display:none;
+}
+
+.morestock > button {
   width:100%;
   cursor:pointer;
   color:#0066CC;

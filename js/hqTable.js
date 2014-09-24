@@ -28,7 +28,7 @@ function historyTableMake(name, arr) {
           已达成目标价的股票(" + length + "只) \
         </caption> \
          <tr>  \
-           <th>关注日期</th> \
+           <th>达成日期</th> \
            <th>股票代码</th> \
            <th>股票名称</th> \
            <th>初始价格</th> \
@@ -36,12 +36,18 @@ function historyTableMake(name, arr) {
            <th>达成日收盘价</th> \
            <th>累计涨幅%</th> \
            <th>行业分类</th> \
-           <th>达成日期</th> \
+           <th>关注日期</th> \
            <th>总计天数</th> \
          </tr>");
  
   for(var i=0; i<length; i++) {
-    document.write("<tr>");
+    if(i < 20) {
+      document.write("<tr>");
+    }
+    else {
+      document.write("<tr class=\"lsgzdisplay\">");
+    }
+
     for(var j=0; j<width; j++) {
       document.write("<td>" + arr[i][j] + "</td>");
     }
@@ -99,64 +105,29 @@ function emptyTableMake(name, arr) {
         <th class=\"yellow\">实时业绩<\/th>\
       <\/tr>");
 
-  if(arr.length < 20) {
-    for(var i=0;i<length;i++) {
-      document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
-        <td>"+ arr[i][2] + "</td> \
-        <td>"+ "--" + "</td> \
-        <td>"+ " " + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ arr[i][1] + "</td> \
-        <td>"+ arr[i][4] + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0 + "</td> \
-        <td>"+ arr[i][5] + "</td> \
-        <td>"+ "--" + "</td> \
-      </tr>");
+  for(var i=0;i<length;i++) {
+    if(i < 20) {
+      document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\">");
     }
-  }
-  else {
-    for(var i=0;i<20;i++) {
-      document.write("<tr id=\"" + name + "Table" + arr[i][0] + "\"> \
-        <td>"+ arr[i][2] + "</td> \
-        <td>"+ "--" + "</td> \
-        <td>"+ " " + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ arr[i][1] + "</td> \
-        <td>"+ arr[i][4] + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0 + "</td> \
-        <td>"+ arr[i][5] + "</td> \
-        <td>"+ "--" + "</td> \
-      </tr>");
+    else {
+      document.write("<tr class=\"hqtabledisplay\" id=\"" + name + "Table" + arr[i][0] + "\">");
     }
 
-    for(var i=20;i<length;i++) {
-      document.write("<tr class=\"hqtabledisplay\" id=\"" + name + "Table" + arr[i][0] + "\"> \
-        <td>"+ arr[i][2] + "</td> \
-        <td>"+ "--" + "</td> \
-        <td>"+ " " + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ arr[i][1] + "</td> \
-        <td>"+ arr[i][4] + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0.00 + "</td> \
-        <td>"+ 0 + "</td> \
-        <td>"+ arr[i][5] + "</td> \
-        <td>"+ "--" + "</td> \
-      </tr>");
-    }
+    document.write("<td>"+ arr[i][2] + "</td> \
+      <td>"+ "--" + "</td> \
+      <td>"+ " " + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ arr[i][1] + "</td> \
+      <td>"+ arr[i][4] + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0.00 + "</td> \
+      <td>"+ 0 + "</td> \
+      <td>"+ arr[i][5] + "</td> \
+      <td>"+ "--" + "</td> \
+    </tr>");
   }
   document.write("</table>");
 }
