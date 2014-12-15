@@ -243,7 +243,7 @@ function tableMake(arr, stockData, name, historyNum) {
     trNode.cells[13].innerHTML = stockData[id]["grade"];
 
     //根据数据内容调整字体颜色,根据价格升降显示背景色
-    if (trNode.cells[4].innerHTML > oldPrice) {
+    if (oldPrice != 0.0 && trNode.cells[4].innerHTML > oldPrice) {
       trNode.cells[4].style.backgroundColor = "#FEEEEE";
     }
     else if(trNode.cells[4].innerHTML < oldPrice) {
