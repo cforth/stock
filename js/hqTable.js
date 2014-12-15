@@ -221,9 +221,10 @@ function stockDataMake(arr, data) {
 
 
 //跟新表格中的行情数据
-function tableMake(arr, stockData, name) {
+function tableMake(arr, stockData, name, historyNum) {
+  var goodNum = historyNum;
   var length = arr.length;
-  var goodNum = ordNum = badNum = 0;
+  var ordNum = badNum = 0;
   var id, days, trNode, oldPrice;
   
   for(var i=0;i<length;i++) {
@@ -282,22 +283,24 @@ function tableMake(arr, stockData, name) {
       break;
     }
   }
+    
+    allLength = length + historyNum;
+    goodNum = (goodNum * 100 / allLength).toFixed(2);
+    ordNum =  (ordNum * 100 / allLength).toFixed(2);
+    badNum =  (badNum * 100 / allLength).toFixed(2);
 
-    goodNum = (goodNum * 100 / length).toFixed(2);
-    ordNum =  (ordNum * 100 / length).toFixed(2);
-    badNum =  (badNum * 100 / length).toFixed(2);
-
-  //显示行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + length + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
+  //显示股票池业绩统计和行情更新时间
+  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + allLength + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
   
 
 }
 
 
-//根据json数据更新指数与股票行情,其中使用到了全局数组indexArr与hqArr
+//根据json数据更新指数与股票行情,其中使用到了全局数组historyArr, indexArr与hqArr
 function stockArrayMake(data) {
+  historyNum = historyArr.length;
   indexMake(indexArr, data, "index");  
-  tableMake(hqArr, stockDataMake(hqArr, data), "stock");  
+  tableMake(hqArr, stockDataMake(hqArr, data), "stock", historyNum);  
 
 }
 
