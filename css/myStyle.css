@@ -63,6 +63,9 @@ p {
 .mystate {
   font-size:16px;
   color:#606060;
+  min-height:760px; /*（解决ie8.9.ff.chrome）*/
+  *+height:100%;  /*（解决ie7）*/
+  _height:760px; /*（解决ie6） ie6超出自动溢出 */
 }
 
 h1 {
