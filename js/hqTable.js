@@ -177,7 +177,7 @@ function dailyGrade(nowDaily, old, target, price) {
   var dailyTarget = totalChange(target, old);
   var dailyTargetChange = dailyTarget / 180;
   var grade = nowDaily - dailyTargetChange;
-  if(grade > 0 || grade ==0 || price > target) {
+  if(grade > 0 || grade == 0 || price > target) {
     return "优秀";
   }
   else if(nowDaily > 0 || nowDaily == 0) {
@@ -213,7 +213,7 @@ function stockDataMake(arr, data) {
     stockData[stockId]["change"] = change.toFixed(2);
     stockData[stockId]["space"] = (((arr[i][4] - data[stockId]["price"]) / data[stockId]["price"]) * 100).toFixed(2);
     stockData[stockId]["days"] = days;
-    stockData[stockId]["grade"] = dailyGrade(daily, arr[i][3], arr[i][4], (data[stockId]["price"]).toFixed(2));
+    stockData[stockId]["grade"] = dailyGrade(daily, parseFloat(arr[i][3]), parseFloat(arr[i][4]), (data[stockId]["price"]).toFixed(2));
     stockData[stockId]["update"] = data[stockId]["update"];
   }
   return stockData;
