@@ -294,6 +294,7 @@ function tableMake(arr, stockData, name, historyNum) {
     goodNum = (goodNum * 100 / allLength).toFixed(2);
     ordNum =  (ordNum * 100 / allLength).toFixed(2);
     badNum =  (badNum * 100 / allLength).toFixed(2);
+    overdue = (overdue * 100 / allLength).toFixed(2);
 
   //显示股票池业绩统计和行情更新时间
   document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + allLength + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "% 超期:" + overdue + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
