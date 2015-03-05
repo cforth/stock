@@ -227,7 +227,7 @@ function stockDataMake(arr, data) {
 function tableMake(arr, stockData, name, historyNum) {
   var goodNum = historyNum;
   var length = arr.length;
-  var ordNum = badNum = 0;
+  var ordNum = badNum = overdue = 0;
   var id, days, trNode, oldPrice;
   
   for(var i=0;i<length;i++) {
@@ -284,6 +284,9 @@ function tableMake(arr, stockData, name, historyNum) {
     case "差评":
       badNum += 1;
       break;
+    case "超期":
+      overdue += 1;
+      break;
     }
   }
     
@@ -293,7 +296,7 @@ function tableMake(arr, stockData, name, historyNum) {
     badNum =  (badNum * 100 / allLength).toFixed(2);
 
   //显示股票池业绩统计和行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + allLength + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
+  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + allLength + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "% 超期:" + overdue + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
   
 
 }
