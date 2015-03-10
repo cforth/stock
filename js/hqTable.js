@@ -172,22 +172,29 @@ function dailyChange(change, days) {
   return change / days;
 }
 
-//计算实际日均与目标日均之间的差，返回优秀、中性、差评
+//计算实际日均与目标日均之间的差，返回优秀、良好、差评
 function dailyGrade(nowDaily, old, target, price, days) {
   var dailyTarget = totalChange(target, old);
   var dailyTargetChange = dailyTarget / 180;
   var grade = nowDaily - dailyTargetChange;
   if(days > 180) {
-    return "超期";
-  }
-  else if(grade > 0 || grade == 0 || price > target) {
-    return "优秀";
-  }
-  else if(nowDaily > 0 || nowDaily == 0) {
-    return "中性";
-  }
+    if(nowDaily > 0) {
+      return "良好";
+    }
+    else {
+      return "差评";
+    }
+  } 
   else {
-    return "差评";
+    if(grade > 0 || grade == 0 || price > target) {
+      return "优秀";
+    }
+    else if(grade < 0 && nowDaily > 0) {
+      return "良好";
+    }
+    else {
+      return "差评";
+    }
   }
 }
 
@@ -224,10 +231,9 @@ function stockDataMake(arr, data) {
 
 
 //跟新表格中的行情数据
-function tableMake(arr, stockData, name, historyNum) {
-  var goodNum = historyNum;
+function tableMake(arr, stockData, name) {
   var length = arr.length;
-  var ordNum = badNum = overdue = 0;
+  var goodNum = ordNum = badNum = overdue = 0;
   var id, days, trNode, oldPrice;
   
   for(var i=0;i<length;i++) {
@@ -278,26 +284,21 @@ function tableMake(arr, stockData, name, historyNum) {
     case "优秀":
       goodNum += 1;
       break;
-    case "中性":
+    case "良好":
       ordNum += 1;
       break;
     case "差评":
       badNum += 1;
       break;
-    case "超期":
-      overdue += 1;
-      break;
     }
   }
     
-    allLength = length + historyNum;
-    goodNum = (goodNum * 100 / allLength).toFixed(2);
-    ordNum =  (ordNum * 100 / allLength).toFixed(2);
-    badNum =  (badNum * 100 / allLength).toFixed(2);
-    overdue = (overdue * 100 / allLength).toFixed(2);
+    goodNum = (goodNum * 100 / length).toFixed(2);
+    ordNum =  (ordNum * 100 / length).toFixed(2);
+    badNum =  (badNum * 100 / length).toFixed(2);
 
   //显示股票池业绩统计和行情更新时间
-  document.getElementById("stockTime").innerHTML ="网页版行情(总计关注" + allLength + "只 优秀:" + goodNum +"% 中性:" + ordNum + "% 差评:" + badNum + "% 超期:" + overdue + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
+  document.getElementById("stockTime").innerHTML ="网页版行情(正在关注" + length + "只 优秀:" + goodNum +"% 良好:" + ordNum + "% 差评:" + badNum + "%) <span style=\"float:right\">" + stockData[arr[0][0]]["update"] + "</span>";
   
 
 }
@@ -307,7 +308,7 @@ function tableMake(arr, stockData, name, historyNum) {
 function stockArrayMake(data) {
   historyNum = historyArr.length;
   indexMake(indexArr, data, "index");  
-  tableMake(hqArr, stockDataMake(hqArr, data), "stock", historyNum);  
+  tableMake(hqArr, stockDataMake(hqArr, data), "stock");  
 
 }
 
