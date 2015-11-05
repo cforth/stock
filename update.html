@@ -1,38 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="投资决策参考留言板" />
-  <link rel="stylesheet" type="text/css" href="css/myStyle.css">
-  <link rel="icon" href="cf.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="cf.ico" type="image/x-icon" /> 
-  <script src="js/jquery-1.11.1.min.js"></script>
-  <script src="js/hqTable.js" type="text/javascript"></script>
-  <script src="js/sortTable.js" type="text/javascript"></script>
-  <script src="js/stockArr.js" type="text/javascript"></script>
-
-  <title>表格更新</title>
-</head>
-
-<body>
-
-  <div id="container">
-    <div id="main">
+---
+layout: main
+title: 数据更新工具
+---
     <div id ="historyTableUpdate"></div>
-
-
     <script>
       var stockUrl = urlMake(indexArr, hqArr);
       doJsonp(stockUrl, historyTableUpdate, 20000);
     </script>
- 
- 
     </div>
-
-  </div>
-
-</body>
-
-
-</html>

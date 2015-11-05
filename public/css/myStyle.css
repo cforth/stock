@@ -4,11 +4,11 @@
   border:0;
 }
 
-div#container {
+.container {
   width:100%;
 }
 
-div#header {
+.header {
   height:60px;
   background-color:#F1F1F1;
   color:#0066CC;
@@ -18,7 +18,7 @@ div#header {
   margin-bottom:10px;
 }
 
-div#main {
+.main {
   margin:0 auto;
   padding-left:20px;
   padding-right:20px;
@@ -26,7 +26,7 @@ div#main {
   min-height:900px;
 }
 
-div#footer {
+.footer {
   text-align:center;
   background-color:#F1F1F1;
 }
