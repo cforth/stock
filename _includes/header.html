@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="十八哥的股票关注，显示及时行情以及目标价位等信息。仅作参考，投资须谨慎。" />
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/public/css/myStyle.css">
+  <link rel="icon" href="{{ site.baseurl }}/cf.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="cf.ico" type="image/x-icon" /> 
+  <script src="{{ site.baseurl }}/public/js/jquery-1.11.1.min.js"></script>
+  <script src="{{ site.baseurl }}/public/js/hqTable.js" type="text/javascript"></script>
+  <script src="{{ site.baseurl }}/public/js/sortTable.js" type="text/javascript"></script>
+  <script src="{{ site.baseurl }}/public/js/stockArr.js" type="text/javascript"></script>
+
+  <script>
+    <!-- 显示隐藏股票行情 -->
+    $(document).ready(function(){
+      $("#xygp").click(function(){
+        $(".hqtabledisplay").fadeToggle();
+      });
+    });
+
+    <!-- 显示隐藏历史关注 -->
+    $(document).ready(function(){
+      $("#lsgz").click(function(){
+        $(".lsgzdisplay").fadeToggle();
+      });
+    });
+
+  </script>
+
+  <title>{{ page.title }}</title>
+</head>
+
+<body>
+
+  <div id="container">
+
+    <div id="header">
+      <h1>投 资 决 策 参 考</h1>
+    </div>
