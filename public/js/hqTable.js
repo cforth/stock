@@ -3,7 +3,7 @@
 //利用arguments收集参数
 function urlMake() {
   var url = "http://api.money.126.net/data/feed/";
-  var length = 0;
+
   for (var i=0; i<arguments.length; i++) {
 	for(var j=0; j<arguments[i].length; j++) {
 		url += arguments[i][j][0] + ",";
@@ -60,7 +60,7 @@ function emptyIndexMake(name, arr) {
   document.write("<table id=\"" + name + "Head\"> \
         <caption> \
           大盘指数 \
-          <a href=\"http:\/\/cfxyz.com\/stock\/comments.html\" style=\"float:right\">留言板<\/a> \
+          <a href=\"\/stock\/comments.html\" style=\"float:right\">留言板<\/a> \
         <\/caption> \
         <tr> \
           <th colspan=\"3\">上证指数</th> \
