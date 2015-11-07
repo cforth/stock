@@ -6,7 +6,7 @@ title: 投资决策参考
     <script>
     emptyIndexMake("index", indexArr);
     emptyTableMake("stock", hqArr);
-    var stockUrl = urlMake(indexArr, hqArr);
+    var stockUrl = urlMake(indexArr, hqArr);  //urlMake可以接受若干个参数，内部实现使用arguments来收集参数
 
     // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
     doJsonp(stockUrl, stockArrayMake, 20000);

@@ -1,16 +1,13 @@
 /******************************************************/
 //根据股票行情数组来创建126股票数据接口的url请求
-function urlMake(iarr, harr) {
+//利用arguments收集参数
+function urlMake() {
   var url = "http://api.money.126.net/data/feed/";
-  var ilength = iarr.length;
-  var hlength = harr.length;
-
-  for(var i=0; i<ilength; i++) {
-    url = url + iarr[i] + ",";
-  }
-  
-  for(var i=0; i<hlength; i++) {
-    url = url + harr[i][0] + ",";
+  var length = 0;
+  for (var i=0; i<arguments.length; i++) {
+	for(var j=0; j<arguments[i].length; j++) {
+		url += arguments[i][j][0] + ",";
+	}
   }
   url += "money.api";
 
