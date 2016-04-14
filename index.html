@@ -4,6 +4,14 @@ title: 投资决策参考
 ---
 
     <script>
+    //去除关注日期已经超过了180天的股票数据
+    var hqArr = new Array();
+    for(var i = 0; i < allHqArr.length; i++) {
+        if(Math.round((new Date().getTime() - newDate(allHqArr[i][2]).getTime()) / 60 / 60 / 24 / 1000) + 1 <= 180) {
+            hqArr[i] = allHqArr[i];
+        }
+    }
+    
     emptyIndexMake("index", indexArr);
     emptyTableMake("stock", hqArr);
     var stockUrl = urlMake(indexArr, hqArr);  //urlMake可以接受若干个参数，内部实现使用arguments来收集参数
