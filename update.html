@@ -4,7 +4,15 @@ title: 数据更新工具
 ---
     <div id ="historyTableUpdate"></div>
     <script>
-      var stockUrl = urlMake(indexArr, hqArr);
-      doJsonp(stockUrl, historyTableUpdate, 20000);
+    //去除关注日期已经超过了180天的股票数据
+    var hqArr = new Array();
+    for(var i = 0; i < allHqArr.length; i++) {
+        if(Math.round((new Date().getTime() - newDate(allHqArr[i][2]).getTime()) / 60 / 60 / 24 / 1000) + 1 <= 180) {
+            hqArr[i] = allHqArr[i];
+        }
+    }
+    
+    var stockUrl = urlMake(indexArr, hqArr);
+    doJsonp(stockUrl, historyTableUpdate, 20000);
     </script>
     </div>
