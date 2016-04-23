@@ -23,6 +23,29 @@ title: 投资决策参考
     if(nowTime.getHours() >= 9 && nowTime.getHours() <= 15) {
       setInterval("doJsonp(stockUrl, stockArrayMake, 20000)", "5000");
     }
+    
+    //当鼠标移入表格行中时，改变颜色
+	function changeBlueColor(){
+		this.bgColor = "#E6F3FC" ;
+	}
+
+	function changeWhiteColor(){
+		this.bgColor = "white" ;
+	}
+
+	window.onload = function() {
+		var stockTable = document.getElementById("stockTable");
+		for(var x = 0; x < stockTable.rows.length; x++) {
+		stockTable.rows[x].addEventListener("mousemove", changeBlueColor, false);
+		stockTable.rows[x].addEventListener("mouseout", changeWhiteColor, false);
+		}
+        
+		var historyTable = document.getElementById("historyTable");
+		for(var x = 0; x < historyTable.rows.length; x++) {
+		historyTable.rows[x].addEventListener("mousemove", changeBlueColor, false);
+		historyTable.rows[x].addEventListener("mouseout", changeWhiteColor, false);
+		}
+	}
     </script>
 
     <div class="morestock">
