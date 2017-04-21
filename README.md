@@ -2,8 +2,8 @@
 ==================
 
 
-######作者:Chai Fei
-######E-mail:cforth@cfxyz.com
+###### 作者:Chai Fei
+###### E-mail:cforth@cfxyz.com
 ------------------
 
 2015-2016年股票关注，仅供参考。
