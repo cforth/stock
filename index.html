@@ -4,12 +4,12 @@ title: 投资决策参考
 ---
 
     <script>
-    //去除关注日期已经超过了180天的股票数据
+    //去除关注日期已经超过了180天的股票数据（默认全部显示）
     var hqArr = new Array();
     for(var i = 0; i < allHqArr.length; i++) {
-        if(Math.round((new Date().getTime() - newDate(allHqArr[i][2]).getTime()) / 60 / 60 / 24 / 1000) + 1 <= 180) {
+        //if(Math.round((new Date().getTime() - newDate(allHqArr[i][2]).getTime()) / 60 / 60 / 24 / 1000) + 1 <= 180) {
             hqArr[i] = allHqArr[i];
-        }
+        //}
     }
     
     emptyIndexMake("index", indexArr);
